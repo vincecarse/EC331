@@ -70,7 +70,6 @@ def info(i, data):
         lag_year = '09'
     storage = []
     storage.append(joint_extractor(data[i]['stud_info'],['CAMPUS','CAMPUS'],'Campus'))
-    storage.append(joint_extractor(data[i]['dfin'],['DISTRICT','DISTRICT'],'District'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETG03C','CPETG09C'],'gr3_stu_count'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETG04C','CPETG10C'],'gr4_stu_count'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETG05C','CPETG11C'],'gr5_stu_count'))
@@ -104,6 +103,7 @@ def info(i, data):
         print(i)
     file = pd.concat(storage,axis=1,join = 'outer', sort= True)
     file['Year'] = '20'+ i
+    file['DISTRICT'] = file['Campus'].str[:-3]
     data[i]['info'] = file
 
 for i in files:
@@ -123,6 +123,7 @@ def finance(i, data):
     #storage.append(joint_extractor(data[i]['dfin'],['CPFEADSK','CPFEAADIK'],'per_pupil_leadership'))
     file = pd.concat(storage,axis=1,join = 'outer', sort= True)
     file['Year'] = '20'+ i
+    file['DISTRICT'] = file['Campus'].str[:-3]
     data[i]['finance'] = file
 
 for i in panel_years:
