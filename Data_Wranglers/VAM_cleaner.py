@@ -122,6 +122,15 @@ def finance(i, data):
     storage.append(joint_extractor(data[i]['fin'],['CPFEOPRK','CPFEAOPRK'],'per_pupil_exp'))
     storage.append(joint_extractor(data[i]['fin'],['CPFEINRK','CPFEAINSK'],'per_pupil_instruction'))
     storage.append(joint_extractor(data[i]['fin'],['CPFEADSK','CPFEAADIK'],'per_pupil_leadership'))
+    storage.append(joint_extractor(data[i]['fin'],['CPFEOTHK','CPFEOTHK'],'per_pupil_othr'))
+    storage.append(joint_extractor(data[i]['fin'],['CPFEADSK','CPFEAADIK'],'dist_tax_rate'))
+    storage.append(joint_extractor(data[i]['fin'],['CPFEADSK','CPFEAADIK'],'dist_total_rev'))
+    storage.append(joint_extractor(data[i]['fin'],['CPFEADSK','CPFEAADIK'],'dist_local_rev'))
+    storage.append(joint_extractor(data[i]['fin'],['CPFEADSK','CPFEAADIK'],'dist_state_rev'))
+    storage.append(joint_extractor(data[i]['fin'],['CPFEADSK','CPFEAADIK'],'dist_total_val'))
+    storage.append(joint_extractor(data[i]['fin'],['CPFEADSK','CPFEAADIK'],'dist_oil_val'))
+    storage.append(joint_extractor(data[i]['fin'],['CPFEADSK','CPFEAADIK'],'dist_wealth_transfers'))
+
     #storage.append(joint_extractor(data[i]['dfin'],['CPFEADSK','CPFEAADIK'],'per_pupil_leadership'))
     file = pd.concat(storage,axis=1,join = 'outer', sort= True)
     file['Year'] = '20'+ i
