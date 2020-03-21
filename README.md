@@ -11,3 +11,9 @@ git clone https://github.com/vincecarse/EC331.git
 ```
 
 Please contact me at vince.carse@gmail.com for any requests
+
+
+
+Personal comments:
+
+- Need to improve
