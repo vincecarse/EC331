@@ -113,6 +113,7 @@ for i in files:
 info_file = pd.merge(files['04']['info'],files['05']['info'],how = 'outer')
 for i in files:
     info_file = pd.merge(info_file,files[i]['info'],how = 'outer')
+    files[i]['fin'] = pd.merge(files[i]['fin'],files[i]['dfin'], on ='DISTRICT')
 
 
 def finance(i, data):
