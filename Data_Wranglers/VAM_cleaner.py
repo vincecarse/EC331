@@ -5,23 +5,18 @@ files = {}
 
 def year_creator(data):
 
-    for i in range(5,11):
+    for i in range(4,11):
         data.update({str(0)+str(i-1):''})
     data.update({'10':''})
+    data.update({'11':''})
 
 year_creator(files)
 
 
 def academic_importer_late(finish_year):
     file = {}
-    if finish_year in ['04','05','06','07','08','09','10']:
+    if finish_year in ['04','05','06','07','08','09','10','11']:
         for i in range(1,14):
-            file.update({'edu'+str(i):pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/ctaks'+str(i)+'.csv', dtype = str)})
-    if finish_year in ['11']:
-        for i in range(2,14):
-            file.update({'edu'+str(i):pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/ctaks'+str(i)+'.csv', dtype = str)})
-    if finish_year in ['12']:
-        for i in range(1,5):
             file.update({'edu'+str(i):pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/ctaks'+str(i)+'.csv', dtype = str)})
     if finish_year in ['03']:
         for i in range(1,17):
@@ -45,8 +40,6 @@ def academic_importer_late(finish_year):
 for i in files:
     files.update({i:academic_importer_late(i)})
 
-panel_years = ['04','05','06','07','08','09','10']
-
 def column_extractor(data,code,name):
     file = data[code].copy()
     file.name = name
@@ -67,8 +60,6 @@ def joint_extractor(data,codes,name):
 
 def info(i, data):
     lag_year = i[0] + str(int(i[1])-1)
-    if i == '00':
-        lag_year = '99'
     if i == '10':
         lag_year = '09'
     storage = []
@@ -87,12 +78,9 @@ def info(i, data):
     storage.append(joint_extractor(data[i]['staff_info'],['CPSTEXPA','CPSTEXPA'],'teacher_experience'))
     storage.append(joint_extractor(data[i]['staff_info'],['CPSTTENA','CPSTTENA'],'exp_w_dist'))
     storage.append(joint_extractor(data[i]['staff_info'],['CPSTTOFC','CPSTTOFC'],'teacher_count'))
-    if i in ['97','98','99']:
-            print('not relevant')
-    else:
-        storage.append(joint_extractor(data[i]['attend'],['CANC4'+lag_year+'R','canc4'+lag_year+'r'],'completion_rate'))
-        storage.append(joint_extractor(data[i]['attend'],['CAEC4'+lag_year+'R','caec4'+lag_year+'r'],'recieved_GED'))
-        storage.append(joint_extractor(data[i]['attend'],['CAGC4'+lag_year+'R','cagc4'+lag_year+'r'],'graduated'))
+    storage.append(joint_extractor(data[i]['attend'],['CANC4'+lag_year+'R','canc4'+lag_year+'r'],'completion_rate'))
+    storage.append(joint_extractor(data[i]['attend'],['CAEC4'+lag_year+'R','caec4'+lag_year+'r'],'recieved_GED'))
+    storage.append(joint_extractor(data[i]['attend'],['CAGC4'+lag_year+'R','cagc4'+lag_year+'r'],'graduated'))
     storage.append(joint_extractor(data[i]['ref'],['DISTNAME','CPFEOPRK'],'dist_name'))
     storage.append(joint_extractor(data[i]['ref'],['COUNTY','CPFEOPRK'],'county_num'))
     storage.append(joint_extractor(data[i]['ref'],['CFLCHART','CPFEOPRK'],'charter'))
@@ -113,7 +101,7 @@ for i in files:
     info(i,files)
     files[i]['fin']['DISTRICT'] = files[i]['fin']['CAMPUS'].str[:-3]
 
-info_file = pd.merge(files['04']['info'],files['05']['info'],how = 'outer')
+info_file = pd.merge(files['03']['info'],files['04']['info'],how = 'outer')
 for i in files:
     info_file = pd.merge(info_file,files[i]['info'],how = 'outer')
     files[i]['fin'] = pd.merge(files[i]['fin'],files[i]['dfin'], on ='DISTRICT')
@@ -144,19 +132,16 @@ def finance(i, data):
     file['DISTRICT'] = file['Campus'].str[:-3]
     data[i]['finance'] = file
 
-for i in panel_years:
+for i in files:
     finance(i,files)
     print(i)
 
-fin_file = pd.merge(files['04']['finance'],files['05']['finance'],how = 'outer')
+fin_file = pd.merge(files['03']['finance'],files['04']['finance'],how = 'outer')
 for i in files:
     fin_file = pd.merge(fin_file,files[i]['finance'],how = 'outer')
 
-
 def academic(i,data):
     lag_year = i[0] + str(int(i[1])-1)
-    if i == '00':
-        lag_year = '99'
     if i == '10':
         lag_year = '09'
     storage = []
@@ -196,13 +181,17 @@ def academic(i,data):
     file['Year'] = '20'+ i
     data[i]['acam'] = file
 
-for i in panel_years:
+for i in files:
     academic(i,files)
     print(i)
 
-aca_file = pd.merge(files['04']['acam'],files['05']['acam'],how = 'outer', sort = True)
+aca_file = pd.merge(files['03']['acam'],files['04']['acam'],how = 'outer', sort = True)
 for i in files:
     aca_file = pd.merge(aca_file,files[i]['acam'],how = 'outer', sort = True)
+
+
+
+
 
 aca_file = aca_file.replace('-1',np.nan)
 aca_file = aca_file.replace('-4',np.nan)
