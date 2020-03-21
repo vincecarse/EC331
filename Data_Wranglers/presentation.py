@@ -35,7 +35,7 @@ def academic_importer_late(finish_year):
     except FileNotFoundError:
         file.update({'attend':pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/ccadcomp.csv', dtype = str)})
     file.update({'fin':pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/cfin.csv', dtype = str)})
-    file.update({'dfin':pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/cfin.csv', dtype = str)})
+    file.update({'dfin':pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/District_Academic_Performance/'+finish_year+'/dfin.csv', dtype = str)})
     file.update({'other':pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/cothr.csv', dtype = str)})
     return(file)
 
@@ -70,6 +70,7 @@ def info(i, data):
         lag_year = '09'
     storage = []
     storage.append(joint_extractor(data[i]['stud_info'],['CAMPUS','CAMPUS'],'Campus'))
+    storage.append(joint_extractor(data[i]['dfin'],['DISTRICT','DISTRICT'],'District'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETG03C','CPETG09C'],'gr3_stu_count'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETG04C','CPETG10C'],'gr4_stu_count'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETG05C','CPETG11C'],'gr5_stu_count'))
