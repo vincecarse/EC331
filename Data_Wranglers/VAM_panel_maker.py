@@ -15,6 +15,8 @@ panel = pd.merge(panel,dist_type, on = 'District')
 
 panel = panel.sort_values(['Campus','Year'])
 panel = panel.replace('-1',np.nan)
+panel.charter = panel.charter.replace('N',0)
+panel.charter = panel.charter.replace('Y',1)
 panel = panel.replace('-4',np.nan)
 panel = panel.replace('.',np.nan)
 
@@ -28,10 +30,6 @@ for i in panel['Campus'].unique():
         bal.append(i)
 
 balanced_panel = panel[panel['Campus'].isin(bal)]
-
-for i in balanced_panel.Campus.unique():
-    print(len(panel[panel['Campus'] == i]))
-
 balanced_panel.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/balanced_panel.csv')
 
 
