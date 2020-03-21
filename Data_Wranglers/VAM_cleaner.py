@@ -14,7 +14,7 @@ year_creator(files)
 
 def academic_importer_late(finish_year):
     file = {}
-    if finish_year in ['03','04','05','06','07','08','09','10']:
+    if finish_year in ['04','05','06','07','08','09','10']:
         for i in range(1,14):
             file.update({'edu'+str(i):pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/ctaks'+str(i)+'.csv', dtype = str)})
     if finish_year in ['11']:
@@ -22,6 +22,9 @@ def academic_importer_late(finish_year):
             file.update({'edu'+str(i):pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/ctaks'+str(i)+'.csv', dtype = str)})
     if finish_year in ['12']:
         for i in range(1,5):
+            file.update({'edu'+str(i):pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/ctaks'+str(i)+'.csv', dtype = str)})
+    if finish_year in ['03']:
+        for i in range(1,17):
             file.update({'edu'+str(i):pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/ctaks'+str(i)+'.csv', dtype = str)})
     file.update({'staff_info':pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/cstaf.csv', dtype = str)})
     file.update({'stud_info':pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/cstud.csv', dtype = str)})
@@ -161,31 +164,34 @@ def academic(i,data):
     try:
         storage.append(joint_extractor(data[i]['edu1'],['CA003QM'+i+'R','CA003RM'+i+'R'],'TAKS_math_gr3'))
     except KeyError:
-        storage.append(joint_extractor(data[i]['edu1'],['CA003TM'+i+'R','CA003RM'+i+'R'],'TAKS_math_gr3'))
+        storage.append(joint_extractor(data[i]['edu1'],['CA003TM'+i+'R','CA003PM'+i+'R'],'TAKS_math_gr3'))
     try:
         storage.append(joint_extractor(data[i]['edu1'],['CA003QR'+i+'R','CA003RR'+i+'R'],'TAKS_reading_gr3'))
     except KeyError:
-        storage.append(joint_extractor(data[i]['edu1'],['CA003TR'+i+'R','CA003RM'+i+'R'],'TAKS_reading_gr3'))
+        storage.append(joint_extractor(data[i]['edu1'],['CA003TR'+i+'R','CA003PR'+i+'R'],'TAKS_reading_gr3'))
     try:
         storage.append(joint_extractor(data[i]['edu2'],['CA004QM'+i+'R','CA004RM'+i+'R'],'TAKS_math_gr4'))
     except KeyError:
-        storage.append(joint_extractor(data[i]['edu2'],['CA004TM'+i+'R','CA004RM'+i+'R'],'TAKS_math_gr4'))
+        storage.append(joint_extractor(data[i]['edu2'],['CA004TM'+i+'R','CA004PM'+i+'R'],'TAKS_math_gr4'))
     try:
         storage.append(joint_extractor(data[i]['edu2'],['CA004QR'+i+'R','CA004RR'+i+'R'],'TAKS_reading_gr4'))
     except KeyError:
-        storage.append(joint_extractor(data[i]['edu2'],['CA004TR'+i+'R','CA004RM'+i+'R'],'TAKS_reading_gr4'))
+        storage.append(joint_extractor(data[i]['edu2'],['CA004TR'+i+'R','CA004PR'+i+'R'],'TAKS_reading_gr4'))
     try:
         storage.append(joint_extractor(data[i]['edu3'],['CA005QM'+i+'R','CA005RM'+i+'R'],'TAKS_math_gr5'))
     except KeyError:
-        storage.append(joint_extractor(data[i]['edu3'],['CA005TM'+i+'R','CA005RM'+i+'R'],'TAKS_math_gr5'))
+        storage.append(joint_extractor(data[i]['edu3'],['CA005TM'+i+'R','CA005PM'+i+'R'],'TAKS_math_gr5'))
     try:
         storage.append(joint_extractor(data[i]['edu3'],['CA005QR'+i+'R','CA005RR'+i+'R'],'TAKS_reading_gr5'))
     except KeyError:
-        storage.append(joint_extractor(data[i]['edu3'],['CA005TR'+i+'R','CA005RM'+i+'R'],'TAKS_reading_gr5'))
+        storage.append(joint_extractor(data[i]['edu3'],['CA005TR'+i+'R','CA005PR'+i+'R'],'TAKS_reading_gr5'))
     try:
         storage.append(joint_extractor(data[i]['edu11'],['CATTA'+i+'R','CAIYA'+i+'R'],'TAKS_part'))
     except KeyError:
-        storage.append(joint_extractor(data[i]['edu13'],['CATYA'+i+'R','CPFEOPRK'],'TAKS_part'))
+        try:
+            storage.append(joint_extractor(data[i]['edu13'],['CATYA'+i+'R','CPFEOPRK'],'TAKS_part'))
+        except KeyError:
+            storage.append(joint_extractor(data[i]['edu16'],['CATYA'+i+'R','CPFEOPRK'],'TAKS_part'))
     file = pd.concat(storage,axis=1,join = 'outer')
     file['Year'] = '20'+ i
     data[i]['acam'] = file
