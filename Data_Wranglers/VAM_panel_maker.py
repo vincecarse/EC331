@@ -14,17 +14,18 @@ dist_type = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Form
 dist_type = dist_type[['District','Description']]
 elem = pd.merge(elem,dist_type, on = 'District')
 
+elem = elem.sort_values(['Campus','Year'])
+elem = elem.replace('-1',np.nan)
+elem = elem.replace('-4',np.nan)
+elem = elem.replace('.',np.nan)
+
 elem.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/elem.csv')
 
 
 
-elem = panel[panel['grade_span'].isin(['EE - 05','PK - 05','KG - 05'])]
-elem = panel[panel['grade_span'].isin(['EE - 05','PK - 05','KG - 05'])]
-
-
-aca_file = aca_file.replace('-1',np.nan)
-aca_file = aca_file.replace('-4',np.nan)
-aca_file = aca_file.replace('.',np.nan)
+elem = elem.replace('-1',np.nan)
+elem = elem.replace('-4',np.nan)
+elem = elem.replace('.',np.nan)
 aca_file = aca_file.dropna()
 
 panel = pd.merge(aca_file, fin_file)
