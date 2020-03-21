@@ -3,7 +3,6 @@
      - Could need to use Google Maps API
  - District expenditure items (teacher pensions?)
  - Create charter subset
- - Com charter subset
 
 
 ## Stuff to fix
@@ -12,3 +11,6 @@
 
 ## General to do
 - Delete unbalanced panel schools
+
+## Thoughts
+- Is there stuff on the 'type' of district/campus? Like urban, rural etc?
