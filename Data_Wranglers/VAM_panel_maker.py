@@ -32,6 +32,7 @@ balanced_panel = panel[panel['Campus'].isin(bal)]
 for i in balanced_panel.Campus.unique():
     print(len(panel[panel['Campus'] == i]))
 
+balanced_panel.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/balanced_panel.csv')
 
 
 

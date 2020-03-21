@@ -10,8 +10,7 @@
 - Use percent expenditures (e.g. for oil and gas) and then multiply that by per pupil to get per pupil oil and gas.
 
 ## General to do
-- Delete unbalanced panel schools
+- 
 
 ## Thoughts
-- Is there stuff on the 'type' of district/campus? Like urban, rural etc?
 - Main code is called something like 'VAM'
