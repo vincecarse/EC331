@@ -2,10 +2,12 @@
 
 A repo to store all the code used for my dissertation.
 
-Data is not stored here as it is over 10GB.
+Raw data is not stored here as it is over 10GB.
 
 To clone run
 
 ```
 git clone https://github.com/vincecarse/EC331.git
 ```
+
+Please contact me at vince.carse@gmail.com for any requests
