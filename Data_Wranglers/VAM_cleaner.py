@@ -108,6 +108,7 @@ def info(i, data):
 
 for i in files:
     info(i,files)
+    files[i]['fin']['DISTRICT'] = files[i]['fin']['CAMPUS'].str[:-3]
 
 info_file = pd.merge(files['04']['info'],files['05']['info'],how = 'outer')
 for i in files:
