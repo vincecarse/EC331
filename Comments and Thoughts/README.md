@@ -14,3 +14,4 @@
 
 ## Thoughts
 - Is there stuff on the 'type' of district/campus? Like urban, rural etc?
+- Main code is called something like 'VAM'
