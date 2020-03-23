@@ -8,7 +8,6 @@ school_data = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Fo
 school_locations = x['SiteName'].str.replace(' ','+')+'+'+x['CEName'].str.replace(' ','+')
 
 for i in school_locations:
-
     driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver')
     driver.get('https://www.google.com/maps/search/?api=1&query='+i)
     time.sleep(1)
