@@ -20,30 +20,43 @@ for i in panel['dist_name'].unique():
 
 camps_in_dists = pd.DataFrame(panel['dist_name'].unique(), columns = ['dist_name'])
 camps_in_dists['schools'] = camps
+locations = sub_schools[['Campus','dist_name','Location']]
+pre_merge = pd.merge(locations, camps_in_dists, on = 'dist_name')
+small_pan = pd.merge(small_pan,pre_merge, on = 'Campus')
+small_pan['Distance_min'] = 0
+small_pan['Distance_miles'] = 0
+
+a = []
+b = []
+for i in range(955):
+    c = []
+    d = []
+    for j in small_pan['schools'][i]:
+        print((small_pan['Location'][i],j))
+        if not (small_pan['Location'][i] == j):
+            driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver')
+            driver.get('https://www.google.com/maps/dir/?api=1&origin='+small_pan['Location'][i]+'&destination='+j+'&travelmode=driving')
+            try:
+                WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@class='section-directions-trip-numbers']")))
+                x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0]
+                y = x.text.split('\n')[0].split(' ')[0]
+                z = x.text.split('\n')[1].split(' ')[0]
+                c.append(y)
+                d.append(z)
+            except (IndexError, TimeoutException):
+                print('error')
+            driver.close()
+    a.append(c)
+    b.append(d)
+    small_pan['Distance_min'] = pd.Series(a)
+    small_pan['Distance_miles'] = pd.Series(a)
+    print(small_pan['Distance_min'])
+    print(small_pan['Distance_miles'])
 
 
 
-loc_col = sub_schools[['Campus','dist_name','Location']]
 
-
-pre_merge = pd.merge(loc_col, camps_in_dists, on = 'dist_name')
-
-merged_dfs = pd.merge(small_pan,pre_merge, on = 'Campus')
-
-merged_dfs
-
-
-
-
-for schools in camps_in_dists['schools']:
-    for j in schools:
-        driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver')
-        driver.get('https://www.google.com/maps/search/?api=1&query='+j)
-        time.sleep(1)
-        driver.close()
-
-
-
+small_pan['Distance'] = pd.Series(a)
 
 https://www.google.com/maps/search/?api=1&query=centurylink+field
 https://www.google.com/maps/dir/?api=1&origin=RONALD+REAGAN+MS+TX&destination=Rodriguez+Middle+School+TX&travelmode=driving
