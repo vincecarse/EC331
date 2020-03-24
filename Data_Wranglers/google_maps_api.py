@@ -2,7 +2,6 @@ import time
 
 import pandas as pd
 import selenium
-import selenium
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select
