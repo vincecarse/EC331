@@ -2,7 +2,15 @@ import time
 
 import pandas as pd
 import selenium
+import selenium
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.select import Select
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 school_data = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Nutrition_Reimbursement/2017-18/School_Nutrition_Programs___Contact_Information_and_Site-Level_Program_Participation___Program_Year_2017-2018.csv', dtype = str)
 school_data = school_data.rename(columns = {'CEName':'dist_name'})
@@ -34,7 +42,9 @@ for i in range(955):
     for j in small_pan['schools'][i]:
         print((small_pan['Location'][i],j))
         if not (small_pan['Location'][i] == j):
-            driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver')
+            options = webdriver.ChromeOptions()
+            options.add_argument("--headless")
+            driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver', options = options)
             driver.get('https://www.google.com/maps/dir/?api=1&origin='+small_pan['Location'][i]+'&destination='+j+'&travelmode=driving')
             try:
                 WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@class='section-directions-trip-numbers']")))
@@ -49,17 +59,10 @@ for i in range(955):
     a.append(c)
     b.append(d)
     small_pan['Distance_min'] = pd.Series(a)
-    small_pan['Distance_miles'] = pd.Series(a)
+    small_pan['Distance_miles'] = pd.Series(b)
     print(small_pan['Distance_min'])
     print(small_pan['Distance_miles'])
-
-
-
-
-small_pan['Distance'] = pd.Series(a)
-
-https://www.google.com/maps/search/?api=1&query=centurylink+field
-https://www.google.com/maps/dir/?api=1&origin=RONALD+REAGAN+MS+TX&destination=Rodriguez+Middle+School+TX&travelmode=driving
+    small_pan.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel.csv')
 
 
 
