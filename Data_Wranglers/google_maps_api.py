@@ -33,19 +33,29 @@ small_pan = pd.merge(small_pan,pre_merge, on = 'Campus')
 small_pan['Distance_min'] = 0
 small_pan['Distance_miles'] = 0
 
+
+
+
+
 a = []
 b = []
 for i in range(955):
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver', options = options)
+    driver.get('https://www.google.com/maps/dir/?api=1&origin='+small_pan['Location'][0]+'&destination='+small_pan['Location'][0]+'&travelmode=driving')
     c = []
     d = []
     for j in small_pan['schools'][i]:
         print((small_pan['Location'][i],j))
         if not (small_pan['Location'][i] == j):
-            options = webdriver.ChromeOptions()
-            options.add_argument("--headless")
-            driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver', options = options)
-            driver.get('https://www.google.com/maps/dir/?api=1&origin='+small_pan['Location'][i]+'&destination='+j+'&travelmode=driving')
             try:
+                WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@id='directions-searchbox-0']")))
+                WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@id='directions-searchbox-1']")))
+                driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[0].clear()
+                driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].clear()
+                driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[0].send_keys(small_pan['Location'][i]+Keys.ENTER)
+                driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].send_keys(j+Keys.ENTER)
                 WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@class='section-directions-trip-numbers']")))
                 x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0]
                 y = x.text.split('\n')[0].split(' ')[0]
@@ -54,7 +64,6 @@ for i in range(955):
                 d.append(z)
             except (IndexError, TimeoutException):
                 print('error')
-            driver.close()
     a.append(c)
     b.append(d)
     small_pan['Distance_min'] = pd.Series(a)
@@ -62,6 +71,14 @@ for i in range(955):
     print(small_pan['Distance_min'])
     print(small_pan['Distance_miles'])
     small_pan.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel.csv')
+    driver.close()
+
+
+
+
+
+
+    driver.get('https://www.google.com/maps/dir/?api=1&origin='+small_pan['Location'][i]+'&destination='+j+'&travelmode=driving')
 
 
 
