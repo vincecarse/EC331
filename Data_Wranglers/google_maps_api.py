@@ -6,70 +6,42 @@ from selenium import webdriver
 
 school_data = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Nutrition_Reimbursement/2017-18/School_Nutrition_Programs___Contact_Information_and_Site-Level_Program_Participation___Program_Year_2017-2018.csv', dtype = str)
 school_data = school_data.rename(columns = {'CEName':'dist_name'})
-school_data['locations'] = school_data['SiteName'].str.replace(' ','+')+'+'+school_data['dist_name'].str.replace(' ','+')
-dist_data = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Texas_School_GIS/AdjacentDistrict.csv')
-panel = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/balanced_panel.csv')
+school_data['Location'] = school_data['SiteName'].str.replace(' ','+')+'+'+school_data['dist_name'].str.replace(' ','+')
+dist_data = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Texas_School_GIS/AdjacentDistrict.csv', dtype = str)
+panel = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/balanced_panel.csv', dtype = str)
+sub_schools = school_data[(school_data['Grade3']=='Y')&(school_data['Grade4']=='Y')&(school_data['Grade5']=='Y')]
+sub_schools['Campus'] = sub_schools['CountyDistrictCode'].str[:]+sub_schools['SiteID'].str[1:]
+test = panel[panel['Year']=='2005'].sort_values('dist_name')
+test = test[test['Campus'].isin(sub_schools['Campus'].values)]
+panel = panel[panel['Campus'].isin(test['Campus'].values)]
 
-for i in school_data['locations']:
-    driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver')
-    driver.get('https://www.google.com/maps/search/?api=1&query='+i)
-    time.sleep(1)
-    driver.close()
-
-
-##
-## What do i want to find?
-## Distance to other schools?
-##  specific type?
-##  elementary only?
-
-
-## want a list of all the schools in each district
-##
-a = []
+camps = []
 for i in panel['dist_name'].unique():
-    a.append(list(list(school_data[school_data['dist_name']==i]['locations'].unique())))
+    camps.append(list(list(sub_schools[sub_schools['dist_name']==i]['Location'].unique())))
 
-for i in x['dist_name'].unique():
-    x.set_value(i,'schools',list(school_data[school_data['dist_name']==i]['locations'].unique()))
-
-
-
-for i in x['dist_name'].unique():
-    x.at[i,'schools'] = school_data[school_data['dist_name']==i]['locations'].unique()
-
-
-for i in x['dist_name'].unique():
-    x.at[i,'schools'] = [1]
+camps_in_dists = pd.DataFrame(panel['dist_name'].unique(), columns = ['dist_name'])
+camps_in_dists['schools'] = camps
 
 
 
-x = pd.DataFrame(panel['dist_name'].unique(), columns = ['dist_name'])
-x.index = x.dist_name
-x['schools'] = 0
+loc_col = sub_schools[['Campus','dist_name','Location']]
+
+
+pre_merge = pd.merge(loc_col, camps_in_dists, on = 'dist_name')
+
+merged_dfs = pd.merge(test,pre_merge, on = 'Campus')
+
+merged_dfs
 
 
 
-panel['Campus'].unique()
 
-dist_data['ad_name_1'][4]
-
-
-school_data[(school_data['Grade3']=='Y')&(school_data['Grade4']=='Y')&(school_data['Grade5']=='Y')]
-
-school_data[school_data['CEName'].isin(panel.dist_name.unique())]
-
-pd.merge(school_data,panel,how = 'inner', on = 'dist_name')
-
-
-
-panel[panel['dist_name'] == 'EDGEWOOD ISD']
-
-
-panel[panel['dist_name'] == dist_data['ad_name_1'][48].upper()]
-
-
-dist_data['ad_name_1'][4].upper()
+for schools in camps_in_dists['schools']:
+    for j in schools:
+        driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver')
+        driver.get('https://www.google.com/maps/search/?api=1&query='+j)
+        time.sleep(1)
+        driver.close()
 
 
 
@@ -77,6 +49,45 @@ dist_data['ad_name_1'][4].upper()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+panel['Campus'].values
+
+
+sub_schools['CampusID'].dropna().astype(int).sort_values()
+
+
+
+
+
+
+
+
+
+
+
+
+test[['Campus','District','dist_name']]
+
+school_data['CountyDistrictCode']
+
+1903101
+
+
+'220001' in sub_schools['CountyDistrictCode'].str[:]+sub_schools['SiteID'].str[1:]
+
+
+test[test['District'] == '003906']
 
 
 https://www.google.com/maps/search/?api=1&query=centurylink+field
