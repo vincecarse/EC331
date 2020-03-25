@@ -11,6 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
+
 school_data = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Nutrition_Reimbursement/2017-18/School_Nutrition_Programs___Contact_Information_and_Site-Level_Program_Participation___Program_Year_2017-2018.csv', dtype = str)
 school_data = school_data.rename(columns = {'CEName':'dist_name'})
 school_data['Location'] = school_data['SiteName'].str.replace(' ','+')+'+'+school_data['dist_name'].str.replace(' ','+')
@@ -32,6 +33,7 @@ pre_merge = pd.merge(locations, camps_in_dists, on = 'dist_name')
 small_pan = pd.merge(small_pan,pre_merge, on = 'Campus')
 small_pan['Distance_min'] = 0
 small_pan['Distance_miles'] = 0
+
 
 a = []
 b = []
