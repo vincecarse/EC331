@@ -23,6 +23,7 @@ def academic_importer_late(finish_year):
             file.update({'edu'+str(i):pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/ctaks'+str(i)+'.csv', dtype = str)})
     file.update({'staff_info':pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/cstaf.csv', dtype = str)})
     file.update({'stud_info':pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/cstud.csv', dtype = str)})
+    file.update({'dstud_info':pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/District_Academic_Performance/'+finish_year+'/dstud.csv', dtype = str)})
     file.update({'ref':pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/cref.csv', dtype = str)})
     try:
         file.update({'SAT':pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Academic_Performance/'+finish_year+'/ccadcomp.csv', dtype = str)})
@@ -39,6 +40,10 @@ def academic_importer_late(finish_year):
 
 for i in files:
     files.update({i:academic_importer_late(i)})
+    files[i]['fin']['DISTRICT'] = files[i]['fin']['CAMPUS'].str[:-3]
+    files[i]['fin'] = pd.merge(files[i]['fin'],files[i]['dfin'], on ='DISTRICT')
+    files[i]['stud_info']['DISTRICT'] = files[i]['stud_info']['CAMPUS'].str[:-3]
+    files[i]['stud_info'] = pd.merge(files[i]['stud_info'],files[i]['dstud_info'], on ='DISTRICT')
 
 def column_extractor(data,code,name):
     file = data[code].copy()
@@ -67,10 +72,11 @@ def info(i, data):
     storage.append(joint_extractor(data[i]['stud_info'],['CPETG03C','CPETG09C'],'gr3_stu_count'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETG04C','CPETG10C'],'gr4_stu_count'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETG05C','CPETG11C'],'gr5_stu_count'))
+    storage.append(joint_extractor(data[i]['stud_info'],['CPETALLC','CPETALLC'],'all_stud_count'))
+    storage.append(joint_extractor(data[i]['stud_info'],['DPETALLC','DPETALLC'],'all_stud_dist'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETBLAP','CPETBLAP'],'black_stu_percent'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETWHIP','CPETWHIP'],'white_stu_percent'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETHISP','CPETHISP'],'his_stu_percent'))
-    storage.append(joint_extractor(data[i]['stud_info'],['CPETECOP','CPETECOP'],'all_stud_percent'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETGIFP','CPETGIFP'],'gifted_stu_percent'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETSPEP','CPETSPEP'],'spec_ed_stu_percent'))
     storage.append(joint_extractor(data[i]['stud_info'],['CPETECOP','CPETECOP'],'econ_dis_stu_percent'))
@@ -96,13 +102,10 @@ def info(i, data):
 
 for i in files:
     info(i,files)
-    files[i]['fin']['DISTRICT'] = files[i]['fin']['CAMPUS'].str[:-3]
 
 info_file = pd.merge(files['03']['info'],files['04']['info'],how = 'outer')
 for i in files:
     info_file = pd.merge(info_file,files[i]['info'],how = 'outer')
-    files[i]['fin'] = pd.merge(files[i]['fin'],files[i]['dfin'], on ='DISTRICT')
-
 
 def finance(i, data):
     storage = []
@@ -120,6 +123,7 @@ def finance(i, data):
     storage.append(joint_extractor(data[i]['fin'],['DPFRLOCT','DPFRALOCT'],'dist_local_rev'))
     storage.append(joint_extractor(data[i]['fin'],['DPFRSTAT','DPFRASTAT'],'dist_state_rev'))
     storage.append(joint_extractor(data[i]['fin'],['DPFVTOTK','DPFVTOTK'],'dist_total_val_per_pupil'))
+    storage.append(joint_extractor(data[i]['fin'],['DPFVTOTT','DPFVTOTT'],'dist_total_val'))
     storage.append(joint_extractor(data[i]['fin'],['DPFVOILT','DPFVOILT'],'dist_oil_val'))
     storage.append(joint_extractor(data[i]['fin'],['DPFXWLHT','DPFXAWLHT'],'dist_wealth_transfers'))
 
@@ -131,7 +135,6 @@ def finance(i, data):
 
 for i in files:
     finance(i,files)
-    print(i)
 
 fin_file = pd.merge(files['03']['finance'],files['04']['finance'],how = 'outer')
 for i in files:
@@ -180,7 +183,6 @@ def academic(i,data):
 
 for i in files:
     academic(i,files)
-    print(i)
 
 aca_file = pd.merge(files['03']['acam'],files['04']['acam'],how = 'outer', sort = True)
 for i in files:
