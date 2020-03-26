@@ -100,8 +100,6 @@ for i in range(955):
 
 
 
-
-
 ## may need for adjacent districts
 
 dist_data = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Texas_School_GIS/AdjacentDistrict.csv', dtype = str)
