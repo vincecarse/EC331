@@ -11,40 +11,28 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
+small_pan = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel.csv')
 
-school_data = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Formatted_Data/Campus_Nutrition_Reimbursement/2017-18/School_Nutrition_Programs___Contact_Information_and_Site-Level_Program_Participation___Program_Year_2017-2018.csv', dtype = str)
-school_data = school_data.rename(columns = {'CEName':'dist_name'})
-school_data['Location'] = school_data['SiteName'].str.replace(' ','+')+'+'+school_data['dist_name'].str.replace(' ','+')
-panel = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/balanced_panel.csv', dtype = str)
-sub_schools = school_data[(school_data['Grade3']=='Y')&(school_data['Grade4']=='Y')&(school_data['Grade5']=='Y')]
-sub_schools['Campus'] = sub_schools['CountyDistrictCode'].str[:]+sub_schools['SiteID'].str[1:]
-small_pan = panel[panel['Year']=='2005'].sort_values('dist_name')
-small_pan = small_pan[small_pan['Campus'].isin(sub_schools['Campus'].values)]
-panel = panel[panel['Campus'].isin(small_pan['Campus'].values)]
+try:
+    small_pan['schools'] = small_pan['schools'].str[2:-2].str.split("', '")
+    small_pan['Distance_min'] = small_pan['Distance_min'].str[2:-2].str.split("', '")
+    small_pan['Distance_miles'] = small_pan['Distance_miles'].str[2:-2].str.split("', '")
+except AttributeError:
+    print('n/a')
 
-camps = []
-for i in panel['dist_name'].unique():
-    camps.append(list(list(sub_schools[sub_schools['dist_name']==i]['Location'].unique())))
+a = list(small_pan['Distance_min'].dropna().values)
+b = list(small_pan['Distance_miles'].dropna().values)
 
-camps_in_dists = pd.DataFrame(panel['dist_name'].unique(), columns = ['dist_name'])
-camps_in_dists['schools'] = camps
-locations = sub_schools[['Campus','dist_name','Location']]
-pre_merge = pd.merge(locations, camps_in_dists, on = 'dist_name')
-small_pan = pd.merge(small_pan,pre_merge, on = 'Campus')
-small_pan['Distance_min'] = 0
-small_pan['Distance_miles'] = 0
-
-
-a = []
-b = []
-for i in range(955):
+for i in range(4,955):
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver', options = options)
     driver.get('https://www.google.com/maps/dir/?api=1&origin='+small_pan['Location'][0]+'&destination='+small_pan['Location'][0]+'&travelmode=driving')
     c = []
     d = []
+    k = 0
     for j in small_pan['schools'][i]:
+        k += 1
         print((small_pan['Location'][i],j))
         if not (small_pan['Location'][i] == j):
             try:
@@ -62,6 +50,8 @@ for i in range(955):
                 d.append(z)
             except (IndexError, TimeoutException):
                 print('error')
+        if k > 20:
+            time.sleep(1)
     a.append(c)
     b.append(d)
     small_pan['Distance_min'] = pd.Series(a)
@@ -70,13 +60,6 @@ for i in range(955):
     print(small_pan['Distance_miles'])
     small_pan.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel.csv')
     driver.close()
-
-
-
-
-
-
-    driver.get('https://www.google.com/maps/dir/?api=1&origin='+small_pan['Location'][i]+'&destination='+j+'&travelmode=driving')
 
 
 
