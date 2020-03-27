@@ -23,7 +23,7 @@ except AttributeError:
 a = list(small_pan['Distance_min'].dropna().values)
 b = list(small_pan['Distance_miles'].dropna().values)
 
-for i in range(955):
+for i in range(182,955):
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver', options = options)

@@ -30,8 +30,8 @@ camps_in_dists['schools'] = camps
 locations = sub_schools[['Campus','dist_name','Location']]
 pre_merge = pd.merge(locations, camps_in_dists, on = 'dist_name')
 small_pan = pd.merge(small_pan,pre_merge, on = 'Campus')
-small_pan['Distance_min'] = 0
-small_pan['Distance_miles'] = 0
+small_pan['Distance_min'] = np.nan
+small_pan['Distance_miles'] = np.nan
 
 a = []
 b = []
