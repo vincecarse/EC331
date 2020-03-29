@@ -36,8 +36,12 @@ xtreg taks_reading_gr5 taks_reading_gr4_lag1 taks_reading_gr3_lag2 per_pupil_exp
 xtreg taks_math_gr5 taks_math_gr4_lag1 taks_math_gr3_lag2 per_pupil_exp econ_dis_stu_percent teacher_avg_salary teacher_experience exp_w_dist gr5_class_size, fe, if distance_min_10r > 20
 xtreg taks_reading_gr5 taks_reading_gr4_lag1 taks_reading_gr3_lag2 per_pupil_exp econ_dis_stu_percent teacher_avg_salary teacher_experience exp_w_dist gr5_class_size, fe, if distance_min_10r > 20
 
+xtreg taks_math_gr5 taks_math_gr4_lag1 taks_math_gr3_lag2 per_pupil_exp econ_dis_stu_percent teacher_avg_salary teacher_experience exp_w_dist gr5_class_size, fe, if distance_min_10r < 20
+xtreg taks_reading_gr5 taks_reading_gr4_lag1 taks_reading_gr3_lag2 per_pupil_exp econ_dis_stu_percent teacher_avg_salary teacher_experience exp_w_dist gr5_class_size, fe, if distance_min_10r < 20
 
 
+
+xtreg taks_math_gr5 taks_math_gr4_lag1 taks_math_gr3_lag2 per_pupil_exp econ_dis_stu_percent teacher_avg_salary teacher_experience gr5_class_size, fe
 
 
 
