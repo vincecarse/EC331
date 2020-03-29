@@ -62,6 +62,7 @@ panel['Distance_miles_minimum'] = f
 panel['Distance_miles_5r'] = g
 panel['Distance_miles_avg'] = h
 
+panel.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel.csv')
 
 
 
