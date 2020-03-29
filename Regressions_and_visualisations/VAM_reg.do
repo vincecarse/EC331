@@ -3,11 +3,6 @@ import delimited /Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/V
 #dummy variables
 tabulate description, gen(var)
 gen recapture  = (dist_wealth_transfers>0)
-gen small_school  = (all_stud_count<300)
-gen small_gr3  = (gr3_class_size<20)
-gen small_gr4  = (gr4_class_size<20)
-gen small_gr5  = (gr5_class_size<20)
-
 
 #lags
 gen taks_math_gr3_lag1 = taks_math_gr3[_n-1]
