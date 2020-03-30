@@ -11,5 +11,5 @@ git clone https://github.com/vincecarse/EC331.git
 Please contact me at vince.carse@gmail.com for any requests
 
 
-![](/Users/vincentcarse/Github/EC331/gif_test.mov)
+![](/Users/vincentcarse/Github/EC331/gif_test.gif)
 
