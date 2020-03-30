@@ -47,11 +47,14 @@ for i in range(952):
                     driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].clear()
                     driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].send_keys(school+Keys.ENTER)
                     WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@class='section-directions-trip-numbers']")))
-                    x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0]
-                    y = x.text.split('\n')[0].split(' ')[0]
-                    z = x.text.split('\n')[1].split(' ')[0]
+                    x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0].text
+                    y = x.split('\n')[0].split(' ')[0]
+                    if x.split('\n')[0].split(' ')[1] == 'h':
+                        y = str(int(x.split('\n')[0].split(' ')[0])*60+int(x.split('\n')[0].split(' ')[2]))
+                    z = x.split('\n')[1].split(' ')[0]
                     e.append(y)
                     f.append(z)
+                    print(y,z)
                 except (IndexError, TimeoutException):
                     time.sleep(2)
                     try:
@@ -59,11 +62,14 @@ for i in range(952):
                         driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].clear()
                         driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].send_keys(school+Keys.ENTER)
                         WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@class='section-directions-trip-numbers']")))
-                        x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0]
-                        y = x.text.split('\n')[0].split(' ')[0]
-                        z = x.text.split('\n')[1].split(' ')[0]
+                        x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0].text
+                        y = x.split('\n')[0].split(' ')[0]
+                        if x.split('\n')[0].split(' ')[1] == 'h':
+                            y = str(int(x.split('\n')[0].split(' ')[0])*60+int(x.split('\n')[0].split(' ')[2]))
+                        z = x.split('\n')[1].split(' ')[0]
                         e.append(y)
                         f.append(z)
+                        print(y,z)
                     except (IndexError, TimeoutException):
                         e.append('error')
                         f.append('error')
@@ -72,18 +78,21 @@ for i in range(952):
                 options = webdriver.ChromeOptions()
                 options.add_argument("--headless")
                 driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver', options = options)
-                driver.get('https://www.google.com/maps/dir/?api=1&origin='+adj_pan['Location'][0]+'&destination='+adj_pan['Location'][0]+'&travelmode=driving')
+
+                driver.get('https://www.google.com/maps/dir/?api=1&origin='+adj_pan['Location'][i]+'&destination='+adj_pan['Location'][i]+'&travelmode=driving')
                 try:
-                    print('restarting driver')
-                    WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@id='directions-searchbox-1']")))
-                    driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].clear()
-                    driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].send_keys(school+Keys.ENTER)
-                    WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@class='section-directions-trip-numbers']")))
-                    x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0]
-                    y = x.text.split('\n')[0].split(' ')[0]
-                    z = x.text.split('\n')[1].split(' ')[0]
-                    e.append(y)
-                    f.append(z)
+                            WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@id='directions-searchbox-1']")))
+                            driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].clear()
+                            driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].send_keys(school+Keys.ENTER)
+                            WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@class='section-directions-trip-numbers']")))
+                            x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0].text
+                            y = x.split('\n')[0].split(' ')[0]
+                            if x.split('\n')[0].split(' ')[1] == 'h':
+                                y = str(int(x.split('\n')[0].split(' ')[0])*60+int(x.split('\n')[0].split(' ')[2]))
+                            z = x.split('\n')[1].split(' ')[0]
+                            e.append(y)
+                            f.append(z)
+                            print(y,z)
                 except (IndexError, TimeoutException):
                     time.sleep(2)
                     try:
@@ -91,9 +100,11 @@ for i in range(952):
                         driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].clear()
                         driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].send_keys(school+Keys.ENTER)
                         WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@class='section-directions-trip-numbers']")))
-                        x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0]
-                        y = x.text.split('\n')[0].split(' ')[0]
-                        z = x.text.split('\n')[1].split(' ')[0]
+                        x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0].text
+                        y = x.split('\n')[0].split(' ')[0]
+                        if x.split('\n')[0].split(' ')[1] == 'h':
+                            y = str(int(x.split('\n')[0].split(' ')[0])*60+int(x.split('\n')[0].split(' ')[2]))
+                        z = x.split('\n')[1].split(' ')[0]
                         e.append(y)
                         f.append(z)
                     except (IndexError, TimeoutException):
