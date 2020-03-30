@@ -51,12 +51,13 @@ for i in test1.index:
     w.append(v)
 
 test1['adj_dist_schools'] = w
+test1['adj_dist_schools'] = test1['adj_dist_schools'].replace("], [","],  [")
 test2 = test1[['dist_name','adj_dist_schools']]
 panel = pd.merge(panel,test2, how = 'outer',on = 'dist_name')
 panel.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel2.csv')
 
 
-
+panel['adj_dist_schools'][20]
 
 
 #
