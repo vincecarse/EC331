@@ -18,6 +18,8 @@
 - Main code is called something like 'VAM'
 - Look at non-linearities in teacher experience
 - District fixed effects
-  - Use different specifications 
+  - Use different specifications
+  - Potentially look at IO papers for ideas
 - Oil shocks
 - Use distances data for each campus better
+- Consider robustness checks
