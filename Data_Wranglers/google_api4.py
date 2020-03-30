@@ -41,7 +41,7 @@ for i in range(952):
         for school in district:
             k += 1
             print((adj_pan['Location'][i],school))
-            if not (adj_pan['Location'][i] == j):
+            if not (adj_pan['Location'][i] == school):
                 try:
                     WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@id='directions-searchbox-1']")))
                     driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].clear()
