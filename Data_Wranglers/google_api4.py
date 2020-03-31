@@ -27,7 +27,7 @@ except AttributeError:
 a = list(adj_pan['Distance_adj_min'].dropna().values)
 b = list(adj_pan['Distance_adj_miles'].dropna().values)
 
-for i in range(952):
+for i in range(338,952):
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver', options = options)
@@ -43,20 +43,6 @@ for i in range(952):
             print((adj_pan['Location'][i],school))
             if not (adj_pan['Location'][i] == school):
                 try:
-                    WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@id='directions-searchbox-1']")))
-                    driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].clear()
-                    driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].send_keys(school+Keys.ENTER)
-                    WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@class='section-directions-trip-numbers']")))
-                    x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0].text
-                    y = x.split('\n')[0].split(' ')[0]
-                    if x.split('\n')[0].split(' ')[1] == 'h':
-                        y = str(int(x.split('\n')[0].split(' ')[0])*60+int(x.split('\n')[0].split(' ')[2]))
-                    z = x.split('\n')[1].split(' ')[0]
-                    e.append(y)
-                    f.append(z)
-                    print(y,z)
-                except (IndexError, TimeoutException):
-                    time.sleep(2)
                     try:
                         WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@id='directions-searchbox-1']")))
                         driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].clear()
@@ -71,16 +57,8 @@ for i in range(952):
                         f.append(z)
                         print(y,z)
                     except (IndexError, TimeoutException):
-                        e.append('error')
-                        f.append('error')
-            if (k%20 == 0)&(k>0):
-                driver.close()
-                options = webdriver.ChromeOptions()
-                options.add_argument("--headless")
-                driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver', options = options)
-
-                driver.get('https://www.google.com/maps/dir/?api=1&origin='+adj_pan['Location'][i]+'&destination='+adj_pan['Location'][i]+'&travelmode=driving')
-                try:
+                        time.sleep(2)
+                        try:
                             WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@id='directions-searchbox-1']")))
                             driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].clear()
                             driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].send_keys(school+Keys.ENTER)
@@ -93,23 +71,49 @@ for i in range(952):
                             e.append(y)
                             f.append(z)
                             print(y,z)
-                except (IndexError, TimeoutException):
-                    time.sleep(2)
-                    try:
-                        WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@id='directions-searchbox-1']")))
-                        driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].clear()
-                        driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].send_keys(school+Keys.ENTER)
-                        WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@class='section-directions-trip-numbers']")))
-                        x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0].text
-                        y = x.split('\n')[0].split(' ')[0]
-                        if x.split('\n')[0].split(' ')[1] == 'h':
-                            y = str(int(x.split('\n')[0].split(' ')[0])*60+int(x.split('\n')[0].split(' ')[2]))
-                        z = x.split('\n')[1].split(' ')[0]
-                        e.append(y)
-                        f.append(z)
-                    except (IndexError, TimeoutException):
-                        e.append('error')
-                        f.append('error')
+                        except (IndexError, TimeoutException):
+                            e.append('error')
+                            f.append('error')
+                    if (k%20 == 0)&(k>0):
+                        driver.close()
+                        options = webdriver.ChromeOptions()
+                        options.add_argument("--headless")
+                        driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver', options = options)
+
+                        driver.get('https://www.google.com/maps/dir/?api=1&origin='+adj_pan['Location'][i]+'&destination='+adj_pan['Location'][i]+'&travelmode=driving')
+                        try:
+                                    WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@id='directions-searchbox-1']")))
+                                    driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].clear()
+                                    driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].send_keys(school+Keys.ENTER)
+                                    WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@class='section-directions-trip-numbers']")))
+                                    x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0].text
+                                    y = x.split('\n')[0].split(' ')[0]
+                                    if x.split('\n')[0].split(' ')[1] == 'h':
+                                        y = str(int(x.split('\n')[0].split(' ')[0])*60+int(x.split('\n')[0].split(' ')[2]))
+                                    z = x.split('\n')[1].split(' ')[0]
+                                    e.append(y)
+                                    f.append(z)
+                                    print(y,z)
+                        except (IndexError, TimeoutException):
+                            time.sleep(2)
+                            try:
+                                WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@id='directions-searchbox-1']")))
+                                driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].clear()
+                                driver.find_elements_by_xpath("//input[@class='tactile-searchbox-input']")[1].send_keys(school+Keys.ENTER)
+                                WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.XPATH, "//div[@class='section-directions-trip-numbers']")))
+                                x = driver.find_elements_by_xpath("//div[@class='section-directions-trip-numbers']")[0].text
+                                y = x.split('\n')[0].split(' ')[0]
+                                if x.split('\n')[0].split(' ')[1] == 'h':
+                                    y = str(int(x.split('\n')[0].split(' ')[0])*60+int(x.split('\n')[0].split(' ')[2]))
+                                z = x.split('\n')[1].split(' ')[0]
+                                e.append(y)
+                                f.append(z)
+                            except (IndexError, TimeoutException):
+                                e.append('error')
+                                f.append('error')
+                except StaleElementReferenceException:
+                    e.append('error')
+                    f.append('error')
         c.append(e)
         d.append(f)
     a.append(c)
