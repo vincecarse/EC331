@@ -2,6 +2,7 @@ import pandas as pd
 import time
 import selenium
 from selenium import webdriver
+from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import TimeoutException
@@ -27,7 +28,7 @@ except AttributeError:
 a = list(adj_pan['Distance_adj_min'].dropna().values)
 b = list(adj_pan['Distance_adj_miles'].dropna().values)
 
-for i in range(338,952):
+for i in range(345,952):
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver', options = options)
