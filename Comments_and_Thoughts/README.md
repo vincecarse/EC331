@@ -13,6 +13,7 @@
 - Write scraper and wrangler for adjacent district distances
 - Link this to recapture data
 - Split districts by 'type'
+- Fix 'alignment'
 
 ## Thoughts
 - Main code is called something like 'VAM'
