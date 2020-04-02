@@ -25,85 +25,51 @@ try:
 except AttributeError:
     print('n/a')
 
-a = small_pan['Distance_adj_min'].values
-b = small_pan['Distance_adj_miles'].values
-c = []
-d = []
+a = []
+b = []
 
-for row in a:
+for row in small_pan.index:
     e = []
-    for dist in row:
-        e.append([float(i) for i in dist if (i!='error')&(i!='')])
-    c.append(e)
-
-for row in b:
     f = []
-    for dist in row:
+    for dist in small_pan['Distance_adj_min'][row]:
+        e.append([float(i) for i in dist if (i!='error')&(i!='')])
+    a.append(e)
+    for dist in small_pan['Distance_adj_miles'][row]:
         f.append([float(i) for i in dist if (i!='error')&(i!='')])
-    d.append(f)
+    b.append(f)
 
-small_pan['Distance_adj_min_clean'] = c
-small_pan['Distance_adj_miles_clean'] = d
+small_pan['Distance_adj_min_clean'] = a
+small_pan['Distance_adj_miles_clean'] = b
 
-
-
-
-a = panel['Distance_min_clean'].values
-b = panel['Distance_miles_clean'].values
-c = []
-d = []
-e = []
-f = []
-g = []
-h = []
-
-for i in a:
-    try:
-        c.append(min(i))
-        d.append(len([j for j in i if j<10]))
-        e.append(mean(i))
-    except ValueError:
-        c.append(np.nan)
-        d.append(np.nan)
-        e.append(np.nan)
-
-for i in b:
-    try:
-        f.append(min(i))
-        g.append(len([j for j in i if j<5]))
-        h.append(mean(i))
-    except ValueError:
-        f.append(np.nan)
-        g.append(np.nan)
-        h.append(np.nan)
+a1 = []
+b1 = []
+a2 = []
+b2 = []
+for row in small_pan.index:
+    c1 = []
+    d1 = []
+    c2 = []
+    d2 = []
+    for dist in small_pan['Distance_adj_min_clean'][row]:
+        for i in dist:
+            c1.append(i)
+        c2.append(len([i for i in dist if i<10]))
+    a1.append(len([i for i in c1 if i<10]))
+    a2.append(c2)
+    for dist in small_pan['Distance_adj_miles_clean'][row]:
+        for i in dist:
+            d1.append(i)
+        d2.append(len([i for i in dist if i<5]))
+    b1.append(len([i for i in d1 if i<5]))
+    b2.append(d2)
 
 
-panel['Distance_min_minimum'] = c
-panel['Distance_min_10r'] = d
-panel['Distance_min_avg'] = e
-panel['Distance_miles_minimum'] = f
-panel['Distance_miles_5r'] = g
-panel['Distance_miles_avg'] = h
+small_pan['Distance_alldist_min_10r'] = a1
+small_pan['Distance_indist_min_10r'] = a2
+small_pan['Distance_alldist_miles_5r'] = b1
+small_pan['Distance_indist_miles_5r'] = b2
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+small_pan[['Distance_alldist_min_10r','Distance_indist_min_10r']]
 
 
 
