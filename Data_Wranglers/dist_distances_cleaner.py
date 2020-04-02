@@ -25,6 +25,7 @@ except AttributeError:
     print('n/a')
 
 
+small_pan[['adj_dist','Distance_adj_min','Distance_adj_miles']].iloc[3]
 
 
 
