@@ -1,6 +1,4 @@
 ## New Features
- - Distance to nearest substitute school (ARCGIS)
-     - Could need to use Google Maps API
  - District expenditure items (teacher pensions?)
  - Create charter subset
 
@@ -16,8 +14,11 @@
 - Fix 'alignment' of district distance data by rows (2 row lag from 262)
 - Create 'info table' for all adjacent districts (tax rates etc)
 - Create variables for whether a district is at its revenue threshold
+  - Create 'gap' variables, like how difference between two bordering districts' wealth/spending levels changes
+  - Also consider comparing 'macro' differences in student/teacher characteristics
 - Link district info to distance
   - Requires using 'dist_info_file' and 'big_panel2'
+- Could go back to '96/'97 and get info from then too (won't have as good school data though)
 
 ## Thoughts
 - Main code is called something like 'VAM'
