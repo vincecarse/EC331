@@ -13,7 +13,10 @@
 - Write scraper and wrangler for adjacent district distances
 - Link this to recapture data
 - Split districts by 'type'
-- Fix 'alignment' 
+- Fix 'alignment' of district distance data by rows (2 row lag from 262)
+- Create 'info table' for all adjacent districts (tax rates etc)
+- Create variables for whether a district is at its revenue threshold
+- Link district info to distance
 
 ## Thoughts
 - Main code is called something like 'VAM'
