@@ -37,3 +37,6 @@
 - Could test border effects at the school level
   -  Use number of nearby substitute schools as a measure of 'exposure' to changes in other districts' policies
   - Then could compare this with changes in schools in other parts of the district which weren't exposed
+- How to deal with having school-substitutes being correlated with being in an urban area?
+  - Could confine study to urban areas
+  - Breakdown would be urban vs. suburban
