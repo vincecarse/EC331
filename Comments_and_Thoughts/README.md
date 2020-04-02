@@ -9,6 +9,7 @@
 - Fix 'alignment' of district distance data by rows (2 row lag from 262)
 - big_panel is missing lots of distance data for some reason?
 - Could go through and try to recalculate the 'error' distances again
+  - Only have to do this for districts with schools (['']'s call errors)
 
 ## General to do
 - Create variables for whether a district is at its revenue threshold
