@@ -10,6 +10,7 @@ small_pan = panel[panel['Distance_adj_miles'].isna()==False]
 small_pan[['Distance_adj_min','Distance_adj_miles']]
 
 try:
+    small_pan['adj_dist'] = small_pan['adj_dist'].str[2:-2].str.split("', '")
     a = []
     b = []
     for i in small_pan.index:
@@ -24,8 +25,87 @@ try:
 except AttributeError:
     print('n/a')
 
+a = small_pan['Distance_adj_min'].values
+b = small_pan['Distance_adj_miles'].values
+c = []
+d = []
 
-small_pan[['adj_dist','Distance_adj_min','Distance_adj_miles']].iloc[3]
+for row in a:
+    e = []
+    for dist in row:
+        e.append([float(i) for i in dist if (i!='error')&(i!='')])
+    c.append(e)
+
+for row in b:
+    f = []
+    for dist in row:
+        f.append([float(i) for i in dist if (i!='error')&(i!='')])
+    d.append(f)
+
+small_pan['Distance_adj_min_clean'] = c
+small_pan['Distance_adj_miles_clean'] = d
+
+
+
+
+a = panel['Distance_min_clean'].values
+b = panel['Distance_miles_clean'].values
+c = []
+d = []
+e = []
+f = []
+g = []
+h = []
+
+for i in a:
+    try:
+        c.append(min(i))
+        d.append(len([j for j in i if j<10]))
+        e.append(mean(i))
+    except ValueError:
+        c.append(np.nan)
+        d.append(np.nan)
+        e.append(np.nan)
+
+for i in b:
+    try:
+        f.append(min(i))
+        g.append(len([j for j in i if j<5]))
+        h.append(mean(i))
+    except ValueError:
+        f.append(np.nan)
+        g.append(np.nan)
+        h.append(np.nan)
+
+
+panel['Distance_min_minimum'] = c
+panel['Distance_min_10r'] = d
+panel['Distance_min_avg'] = e
+panel['Distance_miles_minimum'] = f
+panel['Distance_miles_5r'] = g
+panel['Distance_miles_avg'] = h
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
