@@ -40,9 +40,9 @@ for i in a:
         d.append(len([j for j in i if j<10]))
         e.append(mean(i))
     except ValueError:
-        c.append(np.nan)
-        d.append(np.nan)
-        e.append(np.nan)
+        c.append(0)
+        d.append(0)
+        e.append(0)
 
 for i in b:
     try:
@@ -50,9 +50,9 @@ for i in b:
         g.append(len([j for j in i if j<5]))
         h.append(mean(i))
     except ValueError:
-        f.append(np.nan)
-        g.append(np.nan)
-        h.append(np.nan)
+        f.append(0)
+        g.append(0)
+        h.append(0)
 
 
 panel['Distance_min_minimum'] = c
@@ -62,7 +62,7 @@ panel['Distance_miles_minimum'] = f
 panel['Distance_miles_5r'] = g
 panel['Distance_miles_avg'] = h
 
-panel.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel.csv')
+panel.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel4.csv')
 
 
 

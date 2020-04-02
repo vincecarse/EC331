@@ -1,11 +1,11 @@
 import pandas as pd
 
 
-panel = pd.read_csv('/Users/vincentcarse/Github/EC331/Regression_data/VAM_reg/new_balanced_panel2.csv')
-panel = panel.drop(['Unnamed: 0', 'Unnamed: 0.1', 'Unnamed: 0.1.1', 'Unnamed: 0.1.1.1',
-'Unnamed: 0.1.1.1.1', 'Unnamed: 0.1.1.1.1.1', 'Unnamed: 0.1.1.1.1.1.1',
-'Unnamed: 0.1.1.1.1.1.1.1', 'Unnamed: 0.1.1.1.1.1.1.1.1',
-'Unnamed: 0.1.1.1.1.1.1.1.1.1', 'Unnamed: 0.1.1.1.1.1.1.1.1.1.1'],axis=1)
+panel = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel2.csv')
+#panel = panel.drop(['Unnamed: 0', 'Unnamed: 0.1', 'Unnamed: 0.1.1', 'Unnamed: 0.1.1.1',
+#'Unnamed: 0.1.1.1.1', 'Unnamed: 0.1.1.1.1.1', 'Unnamed: 0.1.1.1.1.1.1',
+#'Unnamed: 0.1.1.1.1.1.1.1', 'Unnamed: 0.1.1.1.1.1.1.1.1',
+#'Unnamed: 0.1.1.1.1.1.1.1.1.1', 'Unnamed: 0.1.1.1.1.1.1.1.1.1.1'],axis=1)
 small_pan = panel[panel['Distance_adj_miles'].isna()==False]
 small_pan[['Distance_adj_min','Distance_adj_miles']]
 
@@ -69,7 +69,7 @@ small_pan['Distance_indist_min_10r'] = a2
 small_pan['Distance_alldist_miles_5r'] = b1
 small_pan['Distance_indist_miles_5r'] = b2
 
-small_pan.to_csv('/Users/vincentcarse/Github/EC331/Regression_data/VAM_reg/new_balanced_panel3.csv')
+small_pan.to_csv('/Users/vincentcarse/Github/EC331/Regression_data/VAM_reg/new_balanced_panel5.csv')
 
 
 
