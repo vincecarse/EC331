@@ -69,6 +69,7 @@ small_pan['Distance_indist_min_10r'] = a2
 small_pan['Distance_alldist_miles_5r'] = b1
 small_pan['Distance_indist_miles_5r'] = b2
 
+small_pan.to_csv('/Users/vincentcarse/Github/EC331/Regression_data/VAM_reg/new_balanced_panel3.csv')
 
 
 
