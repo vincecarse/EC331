@@ -126,6 +126,7 @@ def finance(i, data):
     storage.append(joint_extractor(data[i]['fin'],['DPFVTOTT','DPFVTOTT'],'dist_total_val'))
     storage.append(joint_extractor(data[i]['fin'],['DPFVOILT','DPFVOILT'],'dist_oil_val'))
     storage.append(joint_extractor(data[i]['fin'],['DPFXWLHT','DPFXAWLHT'],'dist_wealth_transfers'))
+    storage.append(joint_extractor(data[i]['ref'],['DISTNAME','CPFEOPRK'],'dist_name'))
 
     #storage.append(joint_extractor(data[i]['dfin'],['CPFEADSK','CPFEAADIK'],'per_pupil_leadership'))
     file = pd.concat(storage,axis=1,join = 'outer', sort= True)
@@ -145,6 +146,7 @@ def academic(i,data):
     if i == '10':
         lag_year = '09'
     storage = []
+    storage.append(joint_extractor(data[i]['ref'],['DISTNAME','CPFEOPRK'],'dist_name'))
     storage.append(joint_extractor(data[i]['stud_info'],['CAMPUS','CAMPUS'],'Campus'))
     try:
         storage.append(joint_extractor(data[i]['edu1'],['CA003QM'+i+'R','CA003RM'+i+'R'],'TAKS_math_gr3'))
