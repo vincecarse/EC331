@@ -25,10 +25,14 @@ except AttributeError:
     print('n/a')
 
 #why not 955??
-a = list(adj_pan['Distance_adj_min'].dropna().values)
-b = list(adj_pan['Distance_adj_miles'].dropna().values)
 
 for i in range(208,261):
+    a = list(adj_pan['Distance_adj_min'].dropna().values)
+    a1 = a[:208]
+    a2 = a[261:]
+    b = list(adj_pan['Distance_adj_miles'].dropna().values)
+    b1 = b[:208]
+    b2 = b[261:]
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver', options = options)
@@ -117,9 +121,13 @@ for i in range(208,261):
                     f.append('error')
         c.append(e)
         d.append(f)
-    a.append(c)
-    b.append(d)
-    adj_pan['Distance_adj_min'] = pd.Series(a)
-    adj_pan['Distance_adj_miles'] = pd.Series(b)
+    a1.append(c)
+    a1.extend([['']]*(260-i))
+    a1.extend(a2)
+    b1.append(d)
+    a1.extend([['']]*(260-i))
+    a1.extend(a2)
+    adj_pan['Distance_adj_min'] = pd.Series(a1)
+    adj_pan['Distance_adj_miles'] = pd.Series(b1)
     adj_pan.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel2.csv')
     driver.close()
