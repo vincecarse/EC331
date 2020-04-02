@@ -17,6 +17,7 @@
 - Create 'info table' for all adjacent districts (tax rates etc)
 - Create variables for whether a district is at its revenue threshold
 - Link district info to distance
+  - Requires using 'dist_info_file' and 'big_panel2'
 
 ## Thoughts
 - Main code is called something like 'VAM'
