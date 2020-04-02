@@ -29,6 +29,8 @@ for i in small_pan['adj_dist'].values:
             a.add(j.upper())
 
 adj_dists = list(a)
+small_fin_file = fin_file[fin_file['dist_name'].isin(adj_dists)]
 
 
-fin_file[fin_file['dist_name'].isin(adj_dists)]
+
+#
