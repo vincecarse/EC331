@@ -11,7 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-adj_pan = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel2.csv')
+adj_pan = pd.read_csv('/Users/vincentcarse/Github/EC331/Regression_data/VAM_reg/new_balanced_panel2.csv')
 
 try:
     adj_pan['adj_dist'] = adj_pan['adj_dist'].str[2:-2].str.split("', '")
@@ -26,13 +26,14 @@ except AttributeError:
 
 #why not 955??
 
+a = list(adj_pan['Distance_adj_min'].dropna().values)
+a1 = a[:208]
+a2 = a[261:]
+b = list(adj_pan['Distance_adj_miles'].dropna().values)
+b1 = b[:208]
+b2 = b[261:]
+
 for i in range(208,261):
-    a = list(adj_pan['Distance_adj_min'].dropna().values)
-    a1 = a[:208]
-    a2 = a[261:]
-    b = list(adj_pan['Distance_adj_miles'].dropna().values)
-    b1 = b[:208]
-    b2 = b[261:]
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
     driver = webdriver.Chrome(executable_path='/Users/vincentcarse/Python/chromedriver', options = options)
@@ -122,12 +123,8 @@ for i in range(208,261):
         c.append(e)
         d.append(f)
     a1.append(c)
-    a1.extend([['']]*(260-i))
-    a1.extend(a2)
     b1.append(d)
-    a1.extend([['']]*(260-i))
-    a1.extend(a2)
-    adj_pan['Distance_adj_min'] = pd.Series(a1)
-    adj_pan['Distance_adj_miles'] = pd.Series(b1)
+    adj_pan['Distance_adj_min'] = pd.Series(a1+[['']]*(260-i)+a2)
+    adj_pan['Distance_adj_miles'] = pd.Series(b1+[['']]*(260-i)+b2)
     adj_pan.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel2.csv')
     driver.close()
