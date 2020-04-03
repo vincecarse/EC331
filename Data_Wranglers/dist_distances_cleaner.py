@@ -69,7 +69,7 @@ small_pan['Distance_indist_min_10r'] = a2
 small_pan['Distance_alldist_miles_5r'] = b1
 small_pan['Distance_indist_miles_5r'] = b2
 
-small_pan.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel5.csv')
+small_pan.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/new_balanced_panel2.csv')
 
 
 ###   Other
