@@ -21,7 +21,11 @@
 - Trace through district-level changes on school-level changes
   - E.g. tax rates/property wealth etc. on funding
   - Then consider different 'bundles' of school choices (class sizes, teacher salaries etc)
-
+- Could look at:
+  - Property booms
+  - Tax rate shifts
+  - Oil/Gas shocks
+  - Redistribution 
 
 ## Thoughts
 - Look at non-linearities in teacher experience
