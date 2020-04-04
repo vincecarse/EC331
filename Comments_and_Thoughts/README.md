@@ -10,6 +10,9 @@
 - big_panel is missing lots of distance data for some reason?
 - Could go through and try to recalculate the 'error' distances again
   - Only have to do this for districts with schools (['']'s call errors)
+- Stata delimiter???
+
+
 
 ## General to do
 - Create variables for whether a district is at its revenue threshold
@@ -25,7 +28,7 @@
   - Property booms
   - Tax rate shifts
   - Oil/Gas shocks
-  - Redistribution 
+  - Redistribution
 
 ## Thoughts
 - Look at non-linearities in teacher experience
