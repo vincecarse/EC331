@@ -1,6 +1,6 @@
 import pandas as pd
 
-panel_1 = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/full_panel.csv', index_col = 0)
+panel = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/full_panel.csv', index_col = 0)
 panel.rename(columns = {'dist_name_x':'dist_name'})
 
 panel['Total_miles_5r'] = panel['Distance_alldist_miles_5r'] + panel['Distance_miles_5r']
