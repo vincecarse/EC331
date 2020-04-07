@@ -31,18 +31,7 @@ gen num_adj_oth = total_miles_5r*var6
 
 ###      models      ###
 
-xtset campus year
-
-
-#delimit ;
-
-xtreg taks_math_gr5 taks_math_gr4_lag1 
-taks_reading_gr3_lag2 per_pupil_exp econ_dis_stu_percent 
-teacher_avg_salary teacher_experience exp_w_dist  
-exp_sal exp gr5_class_size, fe ;
-
-#delimit cr
-
+xtset campus
 
 #delimit ;
 
@@ -53,9 +42,20 @@ exp_sal exp gr5_class_size, fe ;
 
 #delimit cr
 
+estimates store random
+
+#delimit ;
+
+xtreg taks_reading_gr5 taks_reading_gr4_lag1 
+taks_reading_gr3_lag2 per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience exp_w_dist  
+exp_sal exp gr5_class_size, fe ;
+
+#delimit cr
+
+estimates store fixed
 
 
 
-
-
+hausman fixed random
 

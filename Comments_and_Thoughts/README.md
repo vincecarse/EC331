@@ -48,3 +48,8 @@
 - How to deal with having school-substitutes being correlated with being in an urban area?
   - Could confine study to urban areas
   - Breakdown would be urban vs. suburban
+- Weighted average for campuses with adjacent districts
+  - Or other measures
+- Look at first differences of oil values and funding
+- Variation of funding effects
+  - Poor/rich neighbourhood or rural/urban
