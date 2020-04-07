@@ -9,7 +9,6 @@ new_cols.append('Campus')
 index_panel = index_panel[new_cols]
 test_panel = pd.merge(panel,index_panel,on = 'Campus')
 test_panel = test_panel.drop(['Unnamed: 0'], axis = 1)
-
 test_panel.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/big_panel.csv')
 
 
