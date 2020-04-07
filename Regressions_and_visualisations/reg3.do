@@ -1,5 +1,10 @@
 clear
-import delimited /Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/full_reg_panel.csv 
+import delimited /Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/full_reg_panel.csv
+
+#new variables
+gen taks_math_gr3_lag1 = taks_math_gr3[_n-1]
+
+
 
 #missing values
 recode adj_dist_wealth_transfers_0 (missing=0), gen(new_adj_dist_wealth_transfers_0)
@@ -20,7 +25,7 @@ gen taks_reading_gr3_lag1 = taks_reading_gr3[_n-1]
 gen taks_reading_gr3_lag2 = taks_reading_gr3[_n-2]
 gen taks_reading_gr4_lag1 = taks_reading_gr4[_n-1]
 
-#interactions 
+#interactions
 
 gen exp = teacher_experience*exp_w_dist
 gen exp_sal = teacher_avg_salary*teacher_experience
@@ -31,13 +36,13 @@ gen num_adj_oth = total_miles_5r*var6
 
 ###      models      ###
 
-xtset campus 
+xtset campus
 
 #delimit ;
 
-xtreg taks_reading_gr5 taks_reading_gr4_lag1 
-taks_reading_gr3_lag2 per_pupil_exp econ_dis_stu_percent 
-teacher_avg_salary teacher_experience exp_w_dist  
+xtreg taks_reading_gr5 taks_reading_gr4_lag1
+taks_reading_gr3_lag2 per_pupil_exp econ_dis_stu_percent
+teacher_avg_salary teacher_experience exp_w_dist
 exp_sal exp gr5_class_size i.year, fe ;
 
 #delimit cr
@@ -45,13 +50,9 @@ exp_sal exp gr5_class_size i.year, fe ;
 
 #delimit ;
 
-xtreg taks_math_gr5 taks_math_gr4_lag1 
-taks_math_gr3_lag2 per_pupil_exp econ_dis_stu_percent 
-teacher_avg_salary teacher_experience exp_w_dist  
+xtreg taks_math_gr5 taks_math_gr4_lag1
+taks_math_gr3_lag2 per_pupil_exp econ_dis_stu_percent
+teacher_avg_salary teacher_experience exp_w_dist
 exp_sal exp gr5_class_size i.year, fe ;
 
 #delimit cr
-
-
-
-
