@@ -29,6 +29,7 @@
   - Tax rate shifts
   - Oil/Gas shocks
   - Redistribution
+- Start writing
 
 ## Thoughts
 - Look at non-linearities in teacher experience
@@ -53,3 +54,20 @@
 - Look at first differences of oil values and funding
 - Variation of funding effects
   - Poor/rich neighbourhood or rural/urban
+
+
+
+## Questions
+- How to resolve funding not being significant when including interactions but being so without them?
+ - Do I need to find instruments for the interaction variables?
+ - Do I need to provide a model for interaction terms?
+    - What about in a production function estimate?
+- Three-level panels/fixed-effects
+  - Campus within a district over time
+- What is hierarchical modelling and should I use it?
+   - Are there tests for which level to cluster at?
+- Which time-invariant effects are likely to be correlated over time?
+- ECMs
+   - For within-cluster variation
+   - Which kind of assumptions about dependence and distribution seem reasonable?
+   

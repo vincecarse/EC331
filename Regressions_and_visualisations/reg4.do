@@ -24,10 +24,17 @@ gen taks_reading_gr4_lag1 = taks_reading_gr4[_n-1]
 
 gen exp = teacher_experience*exp_w_dist
 gen exp_sal = teacher_avg_salary*teacher_experience
-gen num_adj_sub = total_miles_5r*var2
-gen num_adj_urb = total_miles_5r*var3
-gen num_adj_oth = total_miles_5r*var6
-#gen adj_exp = total_miles_5r*var6
+
+#units changes 
+
+gen dist_total_rev_per_pupil = dist_total_rev/all_stud_dist
+gen dist_local_rev_per_pupil = dist_local_rev/all_stud_dist
+gen dist_state_rev_per_pupil = dist_state_rev/all_stud_dist
+gen dist_oil_val_per_pupil = dist_oil_val/all_stud_dist
+gen dist_wealth_transfers_per_pupil = dist_wealth_transfers/all_stud_dist
+
+
+
 
 ###      models      ###
 
