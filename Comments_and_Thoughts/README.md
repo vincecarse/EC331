@@ -70,4 +70,6 @@
 - ECMs
    - For within-cluster variation
    - Which kind of assumptions about dependence and distribution seem reasonable?
-   
+- Standard errors for DiD
+   - Bertrand et al '04
+   - Are the assumptions going to hold?
