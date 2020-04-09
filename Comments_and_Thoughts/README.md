@@ -73,3 +73,9 @@
 - Standard errors for DiD
    - Bertrand et al '04
    - Are the assumptions going to hold?
+- Anticipation effects?
+- EHW vs LZ standard errors?
+- Regularity conditions?
+- Lag model vs. differencing
+- Woolridge test for serial correlation?
+ - Breusch-Pagan or LM tests for heteroskedasticity?
