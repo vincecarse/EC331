@@ -54,6 +54,8 @@
 - Look at first differences of oil values and funding
 - Variation of funding effects
   - Poor/rich neighbourhood or rural/urban
+- Set t=1 observations as missing
+- Need to test for serial correlation in errors
 
 
 
@@ -78,4 +80,5 @@
 - Regularity conditions?
 - Lag model vs. differencing
 - Woolridge test for serial correlation?
- - Breusch-Pagan or LM tests for heteroskedasticity?
+  - Breusch-Pagan or LM tests for heteroskedasticity?
+- Between estimator?
