@@ -74,6 +74,7 @@
 - ECMs
    - For within-cluster variation
    - Which kind of assumptions about dependence and distribution seem reasonable?
+   - Dynamic models
 - Standard errors for DiD
    - Bertrand et al '04
    - Are the assumptions going to hold?
@@ -87,4 +88,8 @@
 - Could I estimate a limited dependent variable model?
   - Quasi-linear MLE
   - All usual NLLS exhibits heteroskedasticity
-  
+     - Poisson for large-valued count data?
+- Test for unit roots
+  - Dickey-Fuller
+- How to test for cointegration in the presence of multiple regressors?
+- Leads and lags estimators 
