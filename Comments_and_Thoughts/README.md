@@ -10,7 +10,6 @@
 - big_panel is missing lots of distance data for some reason?
 - Could go through and try to recalculate the 'error' distances again
   - Only have to do this for districts with schools (['']'s call errors)
-- Stata delimiter???
 
 
 
@@ -56,7 +55,9 @@
   - Poor/rich neighbourhood or rural/urban
 - Set t=1 observations as missing
 - Need to test for serial correlation in errors
-
+- Think about using GLS to deal with serial correlation
+   - Try and estimate the 'theta' parameter
+- Simultaneous equation for funding?
 
 
 ## Questions
@@ -64,6 +65,7 @@
  - Do I need to find instruments for the interaction variables?
  - Do I need to provide a model for interaction terms?
     - What about in a production function estimate?
+    - (instruments can only control for time-varying endogeneity)
 - Three-level panels/fixed-effects
   - Campus within a district over time
 - What is hierarchical modelling and should I use it?
@@ -82,3 +84,7 @@
 - Woolridge test for serial correlation?
   - Breusch-Pagan or LM tests for heteroskedasticity?
 - Between estimator?
+- Could I estimate a limited dependent variable model?
+  - Quasi-linear MLE
+  - All usual NLLS exhibits heteroskedasticity
+  
