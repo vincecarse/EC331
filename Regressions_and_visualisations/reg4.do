@@ -41,7 +41,7 @@ gen dist_wealth_transfers_per_pupil = dist_wealth_transfers/all_stud_dist
 
 ###      models      ###
 
-xtset district
+xtset campus year
 
 #delimit ;
 
@@ -65,6 +65,17 @@ exp_sal exp gr5_class_size, fe ;
 
 estimates store fixed
 
+
+#delimit ;
+
+xtreg taks_reading_gr5 taks_reading_gr4_lag1 
+taks_reading_gr3_lag2 per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience exp_w_dist  
+exp_sal exp gr5_class_size, fe ;
+
+#delimit cr
+
+estimates store fixed
 
 
 hausman fixed random
@@ -93,10 +104,20 @@ exp_sal exp gr5_class_size i.year, fe ;
 
 #delimit ;
 
-reg taks_reading_gr5 taks_reading_gr4_lag1 
-taks_reading_gr3_lag2 per_pupil_exp  dist_total_val_per_pupil val_exp 
-econ_dis_stu_percent teacher_avg_salary teacher_experience exp_w_dist  
-exp_sal exp gr5_class_size i.district i.year ;
+reg d.taks_reading_gr5 d.taks_reading_gr4_lag1 
+d.taks_reading_gr3_lag2 d.per_pupil_exp  d.dist_total_val_per_pupil d.val_exp 
+d.econ_dis_stu_percent d.teacher_avg_salary d.teacher_experience d.exp_w_dist  
+d.exp_sal d.exp d.gr5_class_size i.district ;
+
+#delimit cr
+
+
+#delimit ;
+
+reg d.taks_math_gr5 d.taks_math_gr4_lag1 
+d.taks_math_gr3_lag2 d.per_pupil_exp  d.dist_total_val_per_pupil d.val_exp 
+d.econ_dis_stu_percent d.teacher_avg_salary d.teacher_experience d.exp_w_dist  
+d.exp_sal d.exp d.gr5_class_size i.district ;
 
 #delimit cr
 

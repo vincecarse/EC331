@@ -58,7 +58,9 @@
 - Think about using GLS to deal with serial correlation
    - Try and estimate the 'theta' parameter
 - Simultaneous equation for funding?
-
+- Include simple equations which build to more complex ones
+- Include interaction terms as mean-differenced?
+- Are there other variables I can include to reduce the standard errors of my estimates?
 
 ## Questions
 - How to resolve funding not being significant when including interactions but being so without them?
@@ -84,6 +86,7 @@
 - Lag model vs. differencing
 - Woolridge test for serial correlation?
   - Breusch-Pagan or LM tests for heteroskedasticity?
+     - Can heteroskedasticity be dealt with by using logs?
 - Between estimator?
 - Could I estimate a limited dependent variable model?
   - Quasi-linear MLE
@@ -92,4 +95,12 @@
 - Test for unit roots
   - Dickey-Fuller
 - How to test for cointegration in the presence of multiple regressors?
-- Leads and lags estimators 
+- Leads and lags estimators
+- How to model funding?
+- Deal with 'proportionality' of gains (easier for worse performing schools to do better)
+
+
+## Puzzles
+
+- Why is district revenue per pupil so much lower than expenditure?
+- Why do wealth transfers have an insignificant coefficient in funding?
