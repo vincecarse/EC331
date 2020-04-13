@@ -120,6 +120,8 @@ def finance(i, data):
     storage.append(joint_extractor(data[i]['fin'],['DPFTADPR','DPFTADPR'],'dist_total_tax_rate'))
     storage.append(joint_extractor(data[i]['fin'],['DPFTAMOR','DPFTAMOR'],'dist_tax_M&O_rate'))
     storage.append(joint_extractor(data[i]['fin'],['DPFRALLT','DPFRAALLT'],'dist_total_rev'))
+    storage.append(joint_extractor(data[i]['fin'],['DPFROTHT','DPFRAOTHT'],'dist_other_rev'))
+    storage.append(joint_extractor(data[i]['fin'],['DPFRFEDT','DPFRAFEDT'],'dist_federal_rev'))
     storage.append(joint_extractor(data[i]['fin'],['DPFRLOCT','DPFRALOCT'],'dist_local_rev'))
     storage.append(joint_extractor(data[i]['fin'],['DPFRSTAT','DPFRASTAT'],'dist_state_rev'))
     storage.append(joint_extractor(data[i]['fin'],['DPFVTOTK','DPFVTOTK'],'dist_total_val_per_pupil'))

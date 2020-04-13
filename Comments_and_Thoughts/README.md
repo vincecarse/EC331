@@ -28,6 +28,8 @@
   - Tax rate shifts
   - Oil/Gas shocks
   - Redistribution
+- Test pooled vs fe regression significances
+- Look at using GLS for a fixed-effects specification
 - Start writing
 
 ## Thoughts
@@ -72,6 +74,7 @@
   - Campus within a district over time
 - What is hierarchical modelling and should I use it?
    - Are there tests for which level to cluster at?
+   - Could use Mundlak's test?
 - Which time-invariant effects are likely to be correlated over time?
 - ECMs
    - For within-cluster variation
@@ -98,6 +101,9 @@
 - Leads and lags estimators
 - How to model funding?
 - Deal with 'proportionality' of gains (easier for worse performing schools to do better)
+- How to include spatial correlation?
+- How to model parameter heterogeneity
+- Do I need to account for time-effects with such a short panel?
 
 
 ## Puzzles

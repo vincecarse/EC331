@@ -45,20 +45,13 @@ xtset district
 
 #delimit ;
 
-xtreg per_pupil_exp  
+reg per_pupil_exp  
 black_stu_percent spec_ed_stu_percent econ_dis_stu_percent
 dist_local_rev_per_pupil
 dist_state_rev_per_pupil dist_federal_rev_per_pupil 
 dist_other_rev_per_pupil dist_total_val_per_pupil
-dist_local_rev_per_pupil_x_val
-dist_state_rev_per_pupil_x_val
-dist_federal_rev_per_pupil_x_val
-dist_other_rev_per_pupil_x_val
-dist_local_rev_per_pupil_2
-dist_state_rev_per_pupil_2 
-dist_federal_rev_per_pupil_2 
-dist_other_rev_per_pupil_2 
-i.year, fe ;
+dist_wealth_transfers dist_total_tax_rate
+i.year;
 
 #delimit cr
 
