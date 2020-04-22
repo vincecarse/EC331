@@ -6,6 +6,15 @@ import delimited /Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/V
 #dummy variables
 tabulate description, gen(var)
 gen recapture  = (dist_wealth_transfers>0)
+gen oil  = (dist_oil_val>0)
+
+#proportions
+gen taks_math_gr5_prop = taks_math_gr5/100
+gen taks_math_gr4_prop = taks_math_gr4/100
+gen taks_math_gr3_prop = taks_math_gr3/100
+gen taks_reading_gr5_prop = taks_reading_gr5/100
+gen taks_reading_gr4_prop = taks_reading_gr4/100
+gen taks_reading_gr3_prop = taks_reading_gr3/100
 
 #lags
 gen taks_math_gr3_lag1 = taks_math_gr3[_n-1]
@@ -44,10 +53,14 @@ gen log_dist_local_rev_per_pupil = log(dist_local_rev_per_pupil)
 gen log_dist_state_rev_per_pupil = log(dist_state_rev_per_pupil)
 gen log_dist_total_val_per_pupil = log(dist_total_val_per_pupil)
 gen log_taks_math_gr5 = log(taks_math_gr5)
+gen log_taks_reading_gr4 = log(taks_reading_gr4)
+gen log_taks_reading_gr3 = log(taks_reading_gr3)
 
 #mean_differences
-egen dist_total_val_per_pupil_mean  = mean(dist_total_val_per_pupil)
-gen dist_total_val_per_pupil_demean  = dist_total_val_per_pupil - dist_total_val_per_pupil_mean
+bysort campus: egen econ_dis_stu_percent_mean  = mean(econ_dis_stu_percent)
+gen econ_dis_stu_percent_demean  = econ_dis_stu_percent - econ_dis_stu_percent_mean
+bysort campus: egen taks_math_gr5_mean  = mean(taks_math_gr5)
+gen taks_math_gr5_demean  = taks_math_gr5 - taks_math_gr5_mean
 
 #powers
 gen dist_local_rev_per_pupil_2 = dist_local_rev_per_pupil^2
@@ -57,80 +70,17 @@ gen dist_federal_rev_per_pupil_2 = dist_federal_rev_per_pupil^2
 gen dist_total_rev_per_pupil_2 = dist_total_rev_per_pupil^2
 gen dist_total_val_per_pupil_2 = dist_total_val_per_pupil^2
 gen dist_total_val_per_pupil_3 = dist_total_val_per_pupil^3
-gen dist_total_val_per_pupil_dm_2 = dist_total_val_per_pupil_demean^2
+gen econ_dis_stu_percent_2 = econ_dis_stu_percent^2
 
 
-###      regressions      ###
 
-xtset district 
+###      models      ###
 
-#delimit ;
+reg taks_reading_gr5 taks_reading_gr4_lag1 taks_reading_gr3_lag2 
 
-reg per_pupil_exp  
-black_stu_percent spec_ed_stu_percent econ_dis_stu_percent
-dist_local_rev_per_pupil
-dist_state_rev_per_pupil dist_federal_rev_per_pupil 
-dist_other_rev_per_pupil dist_total_val_per_pupil
-dist_wealth_transfers dist_total_tax_rate
-i.year i.district;
-
-#delimit cr
-
-xtset district 
-
-#delimit ;
-
-reg per_pupil_exp  
-black_stu_percent spec_ed_stu_percent econ_dis_stu_percent
-dist_total_val_per_pupil
- dist_total_tax_rate
- i.year;
-
-#delimit cr
+reg taks_math_gr5 taks_math_gr4_lag1 taks_math_gr3_lag2 
 
 
-#delimit ;
-
-reg dist_total_tax_rate  
- i.year;
-
-#delimit cr
-
-#delimit ;
-
-reg per_pupil_exp 
-spec_ed_stu_percent econ_dis_stu_percent
-dist_total_val_per_pupil dist_total_val_per_pupil_dm_2
-i.year;
-
-#delimit cr
-
-#delimit ;
-
-xtreg per_pupil_exp  
-black_stu_percent spec_ed_stu_percent econ_dis_stu_percent
-dist_local_rev_per_pupil
-dist_state_rev_per_pupil dist_federal_rev_per_pupil 
-dist_other_rev_per_pupil dist_total_val_per_pupil
-dist_local_rev_per_pupil_x_val
-dist_state_rev_per_pupil_x_val
-dist_federal_rev_per_pupil_x_val
-dist_other_rev_per_pupil_x_val
-dist_local_rev_per_pupil_2
-dist_state_rev_per_pupil_2 
-dist_federal_rev_per_pupil_2 
-dist_other_rev_per_pupil_2 
-i.year, fe ;
-
-#delimit cr
 
 
-#delimit ;
 
-reg log_per_pupil_exp 
-spec_ed_stu_percent econ_dis_stu_percent
-black_stu_percent white_stu_percent 
-log_dist_total_val_per_pupil 
-i.year;
-
-#delimit cr

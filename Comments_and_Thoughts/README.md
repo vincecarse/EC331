@@ -11,8 +11,6 @@
 - Could go through and try to recalculate the 'error' distances again
   - Only have to do this for districts with schools (['']'s call errors)
 
-
-
 ## General to do
 - Create variables for whether a district is at its revenue threshold
   - Create 'gap' variables, like how difference between two bordering districts' wealth/spending levels changes

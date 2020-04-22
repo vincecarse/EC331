@@ -31,37 +31,3 @@ for i in panel['Campus'].unique():
 
 balanced_panel = panel[panel['Campus'].isin(bal)]
 balanced_panel.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/balanced_panel.csv')
-
-
-
-
-
-
-
-##deprecated
-
-
-
-
-elem = elem.replace('-1',np.nan)
-elem = elem.replace('-4',np.nan)
-elem = elem.replace('.',np.nan)
-aca_file = aca_file.dropna()
-
-panel = pd.merge(aca_file, fin_file)
-panel = pd.merge(panel, info_file)
-panel = panel.replace('-1',np.nan)
-panel = panel.replace('-4',np.nan)
-panel = panel.replace('-2',np.nan)
-panel = panel.replace('.',np.nan)
-panel = panel.drop(['completion_rate','recieved_GED', 'graduated'],axis=1)
-panel = panel.dropna()
-
-
-
-panel[panel['Year']=='2005'][['gr3_stu_count','gr4_stu_count','gr5_stu_count']].astype(int).sum()
-
-
-
-
-panel.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/panel1.csv')
