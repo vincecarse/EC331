@@ -2,7 +2,6 @@ clear
 import delimited /Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/full_reg_panel.csv
 
 #new variables
-gen taks_math_gr3_lag1 = taks_math_gr3[_n-1]
 
 
 
@@ -56,3 +55,23 @@ teacher_avg_salary teacher_experience exp_w_dist
 exp_sal exp gr5_class_size i.year, fe ;
 
 #delimit cr
+
+#delimit ;
+
+xtreg taks_reading_gr5 taks_reading_gr4_lag1
+taks_reading_gr3_lag2 per_pupil_exp econ_dis_stu_percent
+teacher_avg_salary teacher_experience gr5_class_size 
+i.year, fe ;
+
+#delimit cr
+
+
+#delimit ;
+
+xtreg taks_math_gr5 taks_math_gr4_lag1
+taks_math_gr3_lag2 per_pupil_exp econ_dis_stu_percent
+teacher_avg_salary teacher_experience gr5_class_size 
+i.year, fe ;
+
+#delimit cr
+

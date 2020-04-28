@@ -44,6 +44,8 @@ gen log_dist_local_rev_per_pupil = log(dist_local_rev_per_pupil)
 gen log_dist_state_rev_per_pupil = log(dist_state_rev_per_pupil)
 gen log_dist_total_val_per_pupil = log(dist_total_val_per_pupil)
 gen log_taks_math_gr5 = log(taks_math_gr5)
+gen log_taks_reading_gr5 = log(taks_reading_gr5)
+
 
 #mean_differences
 egen dist_total_val_per_pupil_mean  = mean(dist_total_val_per_pupil)
@@ -165,18 +167,49 @@ exp_sal exp gr5_class_size i.year, fe ;
 
 #delimit ;
 
-xtreg taks_reading_gr5 taks_reading_gr4_lag1 
-taks_reading_gr3_lag2 log_per_pupil_exp 
-econ_dis_stu_percent teacher_avg_salary teacher_experience exp_w_dist  
-exp_sal exp gr5_class_size i.year, fe ;
+xtreg log_taks_reading_gr5  
+ log_per_pupil_exp 
+econ_dis_stu_percent teacher_avg_salary teacher_experience  
+ gr5_class_size i.year, fe ;
 
 #delimit cr
+
+estimates store fixed
 
 #delimit ;
 
-xtreg taks_math_gr5 taks_math_gr4_lag1 
-taks_math_gr3_lag2 per_pupil_exp 
-econ_dis_stu_percent teacher_avg_salary teacher_experience exp_w_dist  
-exp_sal exp gr5_class_size i.year, fe ;
+xtreg log_taks_math_gr5  
+ log_per_pupil_exp 
+econ_dis_stu_percent teacher_avg_salary teacher_experience  
+ gr5_class_size i.year;
 
 #delimit cr
+
+estimates store random
+
+hausman fixed random
+
+#delimit ;
+
+xtreg log_taks_math_gr5  
+ log_per_pupil_exp 
+econ_dis_stu_percent teacher_avg_salary teacher_experience  
+ gr5_class_size i.year, fe ;
+
+#delimit cr
+
+estimates store fixed
+
+
+#delimit ;
+
+xtreg log_taks_math_gr5  
+ log_per_pupil_exp 
+econ_dis_stu_percent teacher_avg_salary teacher_experience  
+ gr5_class_size i.year;
+
+#delimit cr
+
+estimates store random
+
+hausman fixed random

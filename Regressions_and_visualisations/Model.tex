@@ -1,0 +1,169 @@
+
+\documentclass[11pt]{article}
+
+
+
+\usepackage{fancyheadings}
+\usepackage{graphicx,epsf,subfigure}
+\usepackage{pstricks,pst-node,psfrag}
+\usepackage{amsthm,amssymb,amsmath}
+
+\newcommand{\bbeta}{\mbox{\boldmath $\beta$}}
+\newcommand{\beps}{\mbox{\boldmath $\epsilon$}}
+\newcommand{\bX}{\mbox{\boldmath $X$}}
+\newcommand{\bY}{\mbox{\boldmath $Y$}}
+\newcommand{\bI}{\mbox{\boldmath $I$}}
+\newcommand{\N}{\mathcal{N}}
+\renewcommand{\baselinestretch}{1.2}
+
+
+\begin{document}
+
+\setlength{\baselineskip}{0.3in} 
+
+
+\section{Introduction}
+\label{s:intro}
+
+Our ultimate aim is to estimate a production function of the form:
+
+$$Score = f(ability,resources,teacher,family,peers,community) + \epsilon$$
+
+Once we have done this policy questions can be answered by investigating the parameters obtained from this estimate. For example how does the effect of class size differ in different communities, what proportion of the variation in expenditure estimates can be attributed to district-level effects?
+
+[Obviously I'll need to put the general background, data and theory here too. (Importantly I need to talk about data selection and assumptions about sampling process. That is, that the data I have dropped were dropped randomly).]
+
+\section{Model}
+\label{s:next}
+
+
+Consider a simple linear model for academic performance over campuses $i=1,\ldots,n$; school districts $j=1,\ldots,957$; and periods $t=2003,\ldots,2011$ (where 2003 represents the academic year '02-'03):
+\begin{align*}
+\mathrm{Gr5.Avg}_{ijt} = \beta_{0} 
+    &+ \beta_{1}  \mathrm{Gr4.Avg}_{ijt-1} 
+    + \beta_{2}  \mathrm{Gr3.Avg}_{ijt-2}    \\
+    &+ \beta_{3}  \mathrm{Per.Pupil.Exp}_{ijt} 
+    + \beta_{4}  \mathrm{Econ.Disadv.Per}_{ijt} \\
+    &+ \beta_{5}  \mathrm{T.Avg.Sal}_{ijt}   
+    + \beta_{6}  \mathrm{T.Avg.Exp}_{ijt}  \\
+    &+ \beta_{7}  \mathrm{Gr5.Class.Size}_{ijt} + \epsilon_{ijt}
+\end{align*}
+
+
+Before estimating this model it is instructive to restrict it to more specialised cases and clearly step through the assumptions required for OLS to be an efficient, unbiased estimation strategy. This makes suggesting alternative estimation strategies much more intuitive.
+
+\subsection{Within district, one time period}
+\label{ss:nextsub1}
+
+Let the first restriction be j = 1 (WLOG let this represent DALLAS ISD) and t = 2006. These are arbitrary parameter values. The model then can be simplified to:
+
+\begin{align*}
+\mathrm{Gr5.Avg}_{i} = \beta_{0} 
+    &+ \beta_{1}  \mathrm{Gr4.Avg.Lag1}_{i} 
+    + \beta_{2}  \mathrm{Gr3.Avg.Lag2}_{i}    \\
+    &+ \beta_{3}  \mathrm{Per.Pupil.Exp}_{i} 
+    + \beta_{4}  \mathrm{Econ.Disadv.Per}_{i} \\
+    &+ \beta_{5}  \mathrm{T.Avg.Sal}_{i}   
+    + \beta_{6}  \mathrm{T.Avg.Exp}_{i}  \\
+    &+ \beta_{7}  \mathrm{Gr5.Class.Size}_{i} + \epsilon_{i}
+\end{align*}
+
+In making these restrictions we can automatically rule out concerns due to time-trends and some spatial autocorrelation, however we must still be confident that the GM assumptions are satisfied.
+
+\subsubsection{Multicollinearity}
+
+We require that the matrix $\bX'\bX$ where
+
+$$\bX = \left( \begin{array}{cc}
+1 & x_1' \\ 1 & x_2' \\ \vdots & \vdots \\ 1 & x_n' \end{array}
+\right)$$,    
+$$x_i = \left( \begin{array}{cc}
+ \mathrm{Gr4.Avg.Lag1}_{i} \\  \mathrm{Gr3.Avg.Lag2}_{i} \\ \vdots \\ \mathrm{Gr5.Class.Size}_{i} \end{array}
+\right)$$ be invertible. 
+
+\subsubsection{Exogeneity}
+
+Measurement error, simultaneity.
+
+\subsubsection{Homoskedasticity}
+
+Downward bias, local spatial autocorrelation. 
+
+
+\subsubsection{Normality}
+
+??
+
+\subsection{Within district, panel}
+\label{ss:nextsub2}
+
+A simple linear model for performance in Dallas ISD:
+\begin{align*}
+\mathrm{Gr5.Avg}_{it} = \beta_{0} 
+    &+ \beta_{1}  \mathrm{Gr4.Avg.Lag1}_{it} 
+    + \beta_{2}  \mathrm{Gr3.Avg.Lag2}_{it}    \\
+    &+ \beta_{3}  \mathrm{Per.Pupil.Exp}_{it} 
+    + \beta_{4}  \mathrm{Econ.Disadv.Per}_{it} \\
+    &+ \beta_{5}  \mathrm{T.Avg.Sal}_{it}   
+    + \beta_{6}  \mathrm{T.Avg.Exp}_{it}  \\
+    &+ \beta_{7}  \mathrm{Gr5.Class.Size}_{it} + \epsilon_{it}
+\end{align*}
+
+\subsection{Across districts, one time period}
+\label{ss:nextsub3}
+
+A simple linear model for performance in 2006:
+\begin{align*}
+\mathrm{Gr5.Avg}_{ij} = \beta_{0} 
+    &+ \beta_{1}  \mathrm{Gr4.Avg.Lag1}_{ij} 
+    + \beta_{2}  \mathrm{Gr3.Avg.Lag2}_{ij}    \\
+    &+ \beta_{3}  \mathrm{Per.Pupil.Exp}_{ij} 
+    + \beta_{4}  \mathrm{Econ.Disadv.Per}_{ij} \\
+    &+ \beta_{5}  \mathrm{T.Avg.Sal}_{ij}   
+    + \beta_{6}  \mathrm{T.Avg.Exp}_{ij}  \\
+    &+ \beta_{7}  \mathrm{Gr5.Class.Size}_{ij} + \epsilon_{ij}
+\end{align*}
+
+\subsection{Across districts, panel}
+\label{ss:nextsub4}
+
+This linear model utilises all our data.
+\begin{align*}
+\mathrm{Gr5.Avg}_{ijt} = \beta_{0} 
+    &+ \beta_{1}  \mathrm{Gr4.Avg}_{ijt-1} 
+    + \beta_{2}  \mathrm{Gr3.Avg}_{ijt-2}    \\
+    &+ \beta_{3}  \mathrm{Per.Pupil.Exp}_{ijt} 
+    + \beta_{4}  \mathrm{Econ.Disadv.Per}_{ijt} \\
+    &+ \beta_{5}  \mathrm{T.Avg.Sal}_{ijt}   
+    + \beta_{6}  \mathrm{T.Avg.Exp}_{ijt}  \\
+    &+ \beta_{7}  \mathrm{Gr5.Class.Size}_{ijt} + \epsilon_{ijt}
+\end{align*}
+
+where $\epsilon_{ijt}=\alpha_{i}+\mu_{j}+\upsilon_{ijt}$ and
+$$\upsilon_{ijt} \sim \N(0,\sigma^2) \hspace{0.1in} \mbox{for all } i,j,t.$$
+
+That is  our errors are composed of time-invariant, campus-level and district-level heterogeneity and an idiosyncratic error. 
+
+\subsection{Other Concerns}
+
+\subsubsection{Hierarchical Error Structure}
+
+\subsubsection{Parameter Heterogeneity}
+
+
+
+
+\section{Estimation Strategy}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+\subsection{Non-Linear Models}
+
+GMM estimation.
+
+\subsection{Dynamic Panel Model}
+
+Small T (9), large N (957). 
+
+\end{document}
+
