@@ -1,5 +1,5 @@
 clear
-import delimited /Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/balanced_panel.csv 
+import delimited /Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/oil_real_camps.csv 
 
 
 
