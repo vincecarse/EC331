@@ -4,7 +4,6 @@
 
 
 \usepackage{fancyheadings}
-\usepackage{graphicx,epsf,subfigure}
 \usepackage{pstricks,pst-node,psfrag}
 \usepackage{amsthm,amssymb,amsmath}
 
@@ -21,25 +20,37 @@
 
 \setlength{\baselineskip}{0.3in} 
 
+A Right not Granted\footnote{footnotes working fine}. A Wrong not Righted.
+Spending and performance in Texan Public Schools
 
 \section{Introduction}
 \label{s:intro}
 
-The United States' constitution does not directly protect the right to education, nor does it imply any such right[1]. This was the decision reached in San Antonio Independent School District v. Rodriguez (1973), a case which centred on the inequalities which natural result from a school financing system based on local property taxation[2]. In particular it centred around the vastly different tax bases in two neighbouring Texan public school districts and the effect this had on the resources available to students in each district. The decision has stood ever since. 
+This paper estimates the educational return to spending in Texan public schools using two methods, which to my knowledge are previously unexplored. Arbitrary restrictions on tax rates due to the unconstitutionality of statewide taxes induced some cash-starved districts to max out their tax rates, presenting windows in which their revenue was completely dependent on property values and state aid. Thus changes in revenue may have been exogenous to changes in school performance. Further to this, random flucuations in the oil price provided positive and negative revenue shocks which may constitute a viable instrument for district revenue, allowing for a more plausible estimate of the causal impact of spending on school performance. These combined with the time-series, campus-level nature of the data allows for estimates which plausibly address some endogeneity concerns which plague other educational production function estimates. Many remain, and are addressed in due course, as are the assumptions on which these estimates rest. The most salient elements of Texas' "byzantine"[10] school finance system are now described, followed by a brief literature review and then the formal results. 
 
-Almost twenty years would pass until Texans would successfully sue the Texan Commisioner of Education for discrimination against students in poor districts[3] in Edgewood Independent School District v. Kirby (Tex 1989). During the trial it was found that the "[the] wealthiest district [have] over $ 14,000,000 of property wealth per student, while the poorest [have] approximately $ 20,000; this disparity reflects a 700 to 1 ratio"[4]. While as Americans the students in Edgewood ISD had no right to education, as Texans it was decided they did. The solution forged by the wrestle between parents, lawmakers and judges which followed was finance-equalisation legislation passed in 1993 and taken into effect in the 1993/94 school year. Though nicknamed 'Robin Hood' by the press, this belied the widespread ire the legislation would draw from economists[5], lawmakers[6] and parents[7] (rich and poor alike), and the two further rounds of lawsuits it would face. In January 2019 Republican Governor Greg Abbott tweeted: "We must put Robin Hood school funding on a path of extinction", later congratulating himself (more mutedly) for "reform" on the issue as the 86th Legislative Session ended[8].
+Texas is partitioned into 1026* independent school districts (ISDs), each a kind of local government with the power to tax property and allocate funds between the schools within it. Some districts are vast, sprawling entities. Dallas ISD for instance educated over 150,000 in 2018/19 with an operating budget of over 1.8b. [dallas wiki]. Others are more modest, like Cayuga ISD which is home to just three schools: an elementary, middle and high school, and under 600 students [cayuga wiki]. While some districts cater to non-public schools like charter, orphanage or prison schools, these are not the subject of this paper.
 
-Far from being a unique, arcane example, interesting only in its novelty, Texas' school finance system mirrors dozens[9] of other states which rely on similar local funding models; as do its problems. Moreover, the "byzantine"[10] nature of the system presents two intruiging settings to the endogeneity-minded econometrician, which to my knowledge are previously unexplored. Arbitrary restrictions on tax rates due to the unconstitutionality of statewide taxes can induce cash-starved districts to max out their tax rates, presenting windows in which their revenue is completely dependent on property values and state aid. Further to this, random flucuations in the oil price can provide positive and negative revenue shocks which may constitute a viable instrument for district revenue, allowing for a more plausible estimate of the causal impact of spending on school performance. These combined with the time-series, campus-level nature of the data allows for estimates which plausibly address some endogeneity concerns which plague other educational production function estimates. Many remain, and are addressed in due course. 
+Districts are funded through a combination of local, state and federal revenue. 
 
-This paper begins by describing the institutional structure of school funding and performance measurement in Texas, then proceeds to review the relevant theoretical and empirical literature, describe the original data and the sample selection, estimate production functions using both identification strategies in several different settings, presents and interprets the findings and then provides opportunities to extend the analysis. 
 
-\section{Model}
+
+
+Almost twenty years would pass until Texans would successfully sue the Texan Commisioner of Education for discrimination against students in poor districts[3] in Edgewood Independent School District v. Kirby (Tex 1989). During the trial it was found that the "[the] wealthiest district [have] over $ 14,000,000 of property wealth per student, while the poorest [have] approximately $ 20,000; this disparity reflects a 700 to 1 ratio"[4]. While as Americans the students in Edgewood ISD had no right to education, as Texans it was decided they did. The solution forged by the wrestle between parents, lawmakers and judges which followed was finance-equalisation legislation passed in 1993 and taken into effect in the 1993/94 school year. Though nicknamed 'Robin Hood' by the press, this belied the widespread ire the legislation would draw from economists[5], lawmakers[6] and parents[7] (rich and poor alike), and the two further rounds of lawsuits it would face. In January 2019 Republican Governor Greg Abbott tweeted: "We must put Robin Hood school funding on a path of extinction", later congratulating himself (more mutedly) for "reform" on the issue as the 86th Legislative Session ended [8].Far from being a unique, arcane example, interesting only in its novelty, Texas' school finance system mirrors dozens[9] of other states which rely on similar local funding models; as do its problems. 
+
+The "byzantine"[10] nature of the system presents two intruiging settings to the econometrician, which to my knowledge are previously unexplored. Arbitrary restrictions on tax rates due to the unconstitutionality of statewide taxes induced some cash-starved districts to max out their tax rates, presenting windows in which their revenue was completely dependent on property values and state aid. Further to this, random flucuations in the oil price provided positive and negative revenue shocks which may constitute a viable instrument for district revenue, allowing for a more plausible estimate of the causal impact of spending on school performance. These combined with the time-series, campus-level nature of the data allows for estimates which plausibly address some endogeneity concerns which plague other educational production function estimates. Many remain, and are addressed in due course. 
+
+
+\section{The Educational Landscape}
 \label{s:next}
 
 
 
 
-The ultimate aim
+\section{Literature Review}
+\label{s:next}
+
+Texas' education system has been the subject of several previous studies, most notably Hoxby '04, Hanushek and Rivkin '05 and 
+
 
 
 Our ultimate aim is to estimate a production function of the form:
@@ -181,6 +192,27 @@ GMM estimation.
 \subsection{Dynamic Panel Model}
 
 Small T (9), large N (957). 
+
+
+\begin{thebibliography}{9}
+
+\bibitem{sup_court} 
+Michel Goossens, Frank Mittelbach, and Alexander Samarin. 
+\textit{The \LaTeX\ Companion}. 
+Addison-Wesley, Reading, Massachusetts, 1993.
+
+\bibitem{2} 
+Albert Einstein. 
+\textit{Zur Elektrodynamik bewegter K{\"o}rper}. (German) 
+[\textit{On the electrodynamics of moving bodies}]. 
+Annalen der Physik, 322(10):891–921, 1905.
+
+\bibitem{3} 
+Knuth: Computers and Typesetting,
+\\\texttt{http://www-cs-faculty.stanford.edu/\~{}uno/abcde.html}
+\end{thebibliography}
+
+
 
 \end{document}
 
