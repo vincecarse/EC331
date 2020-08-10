@@ -1,0 +1,462 @@
+
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in,footskip=0.25in]{geometry}
+\usepackage{pdfpages}
+\usepackage{placeins}
+
+
+\usepackage{fancyheadings}
+\usepackage{pstricks,pst-node,psfrag}
+\usepackage{amsthm,amssymb,amsmath}
+
+\newcommand{\bbeta}{\mbox{\boldmath $\beta$}}
+\newcommand{\beps}{\mbox{\boldmath $\epsilon$}}
+\newcommand{\bX}{\mbox{\boldmath $X$}}
+\newcommand{\bY}{\mbox{\boldmath $Y$}}
+\newcommand{\bI}{\mbox{\boldmath $I$}}
+\newcommand{\N}{\mathcal{N}}
+\renewcommand{\baselinestretch}{1.2}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\begin{document}
+
+
+
+\setlength{\baselineskip}{0.3in} 
+
+\tableofcontents
+\clearpage
+
+\section{Introduction}
+\label{s:intro}
+
+The economics of public education remains a deeply contested field. Essential questions like the impact of class sizes on student performance, the importance of teacher quality and the efficacy of local taxation continue to provoke disputes between leading economists in the field \footnote{After the Coleman Report ('66) challenged the consensus of positive resource effects on education (positing student-level differences as being more dominant) dozens of studies were conducted to estimate this. To address this new literature, Greenwald, Hedges and Laine ('96) released a meta-study of 60 educational production papers and concluded positive overall resource parameters. Hanushek ('97) contradicted this in his meta-study released shortly after. It assessed the relationship between school resources and student achievement in 400 studies and found resource effects were minimal. Since then detailed experimental studies of educational production have been conducted by Krueger ('98), Rivkin, Hanushek and Kain ('05), Kane and Stigler ('08) and educational opportunity by Chetty, Hendren, Kline and Saez ('14). What limited consensus there is seems to suggest within school (often teacher-level) effects dominate across school ones, suggesting an 'incentives-approach' to school reform, rather than a 'resource-approach'. Even this is contested, with many suggesting declining social capital inputs due to poorer quality home lives are offsetting gains in performance due to increased resources.}. Few can doubt the importance of these questions in designing policy. 
+
+Texas is a strong subject to investigate some of these questions for several reasons. It sets a state-wide curriculum and requires common standardised testing by its primary and secondary students, removing the possibility of test or curriculum variation from biasing estimates of resource effects. It has a school finance system with several quirks which provide the possibility of exogenous variation in spending and other independent variables. It is a large state with significant regional variation, allowing for tests across different geographical regions. Moreover its public education system has been the subject of several previous detailed studies which can be built upon. It also shares similarities with American states which operate a hybrid local/state-funded education system\footnote{In particular California. Like Texas it is a large state with oil reserves, tech and agricultural sectors and funds its schools locally; though only around 30\%, compared with Teaxs' 57\% in 2018.}.
+
+Texas is partitioned into 1026 independent school districts (ISDs), each a kind of local government with the power to tax property and allocate funds between the schools within it. Some districts are vast, sprawling entities. Dallas ISD for instance educated over 150,000 in 2018/19 with an operating budget of over \$1.8b. Others are more modest, like Cayuga ISD which is home to just three schools: an elementary, middle and high school, and under 600 students. While some districts cater to non-public schools like charter, orphanage or prison schools, these are not the subject of this paper. Districts are funded through a combination of local, state and federal revenue. 
+
+Texas’ curriculum is standardised across all public schools and known as the Texas Essential Knowledge and Skills (TEKS), which was established in 1998. Between grades 3-11 students are required to complete a common standardised test based on the TEKS to pass to the next grade. This testing existed as the Texas Assessment of Academic Skills (TAAS) from ‘91/’92-‘01/’02, Texas Assessment of Knowledge and Skills (TAKS) from ‘02/’03-‘11/’12 and as the State of Texas Assessments of Academic Readiness (STAAR) since ‘12/’13. Testing is compulsory for students in public schools and the system is administrated by the Texas Education Agency (TEA). Grades are reported as a ‘percentage passed’ figure for each grade within each campus, alongside a participation rate for the campus as a whole.\footnote{Their distributions are strongly positively skewed, due to passing being required to complete the grade. This is addressed further in 'Data'} 
+
+School funding originates from a combination of local, state and federal revenue, but is ultimately allocated by political decisions made by the TEA, the State and federal governments, and local districts themselves. This system has been described as "a recondite scheme for which the word “Byzantine” seems generous" \footnote{No. 14-0776 (Tex. May. 13, 2016)}, but is particularly important to understand, as these decisions inform the interpretation of resource parameters\footnote{For instance a simple regression of reading and math performance on total district revenue both yield negative parameter estimates and explain a miniscule proportion of total variation in test scores. This may be surprising if we didn’t know that the TEA redistributes funding across districts in order to make the system fairer.}. 
+
+[general school funding graphic?]
+
+There is enormous variation in the per-pupil tax bases of each district\footnote{In Edgewood Independent School District v. Kirby (Tex 1989) it was found that the "[the] wealthiest district [have] over \$14,000,000 of property wealth per student, while the poorest [have] approximately \$20,000; this disparity reflects a 700 to 1 ratio". }, leading to vastly different local revenue collection. Not only does Texas have cities with wealthy residential suburbs and poor inner cities but it also boasts oil refineries, heavy manufacturing alongside vast rural area. All of these are contained within school districts, and all are viable sources of taxation. To correct this inequality the TEA allocates funding across districts via the Foundation School Program (FSP), a series of formulas which calculate the contributions a district must make to the state and the state-aid a district receives.\footnote{Hoxby and Kuziemko ('04) are indispensable in navigating this system.} 
+
+The FSP operates under three ‘tiers’ of funding, a ‘guaranteed’ tier (Tier I) for all students, an ‘incentive’ tier (Tier II) and a separate tier for capital expenditures (Tier III). These tiers each have a system of contributions and receipts. Tier 3 does not concern the results in this paper. Funding levels are decided at the per pupil level, which is either measured using Average Daily Attendance (ADA) or Weighted Average Daily Attendance (WADA). WADA is decided by a range of weights to account for the disparity in resources required to educate certain groups of students. For example one student in speech therapy counts as 5 WADA, or 'regular' students.  
+
+Tier I funding centres on a ‘basic allotment’ of funding per pupil to be allocated to each district. This amount is set by the State legislature and was \$5190/ADA in ‘19/’20. The basic allotment is then adjusted to account for differences in size, cost and programs offered between the districts. Districts must fund their Tier I entitlement from local revenue in proportion to their tax wealth and tax rate. Some districts are wealthy enough to self-fund their Tier I allocation, while poorer ones must rely a combination of local tax revenue and state support
+
+Tier 2 is based around a district’s tax rate. For each penny of tax between \$1.00 and \$1.06 per \$100 which a district sets, a district receives a variable dollar amount per WADA (\$44.30 in ‘11/’12) and for each penny between \$1.06 and \$1.17 a district receives \$31.95 per WADA. This tier is designed to encourage districts to raise their tax rates. Just as in Tier I some districts are also wealthy enough to self-fund their Tier II allocation, and others must rely on state and local sources.
+
+While school boards have no direct control over the FSP, they make two decisions which influence their available funding: a tax rate to levy on property owners and a total number of ‘weighted’ students to report to the TEA. While some weights which compose WADA measures are objective, like the number of pregnant students, most are under the school's discretion.\footnote{Cullen (2003) estimates this is \textgreater95\%}
+
+***
+How much of this info is true??
+
+
+These directly affect their Tier II allocation. 
+
+State governments set … The federal government …
+
+Teacher salaries, class sizes and hiring decisions are all made at the district level… 
+
+Parents have discretion in sending their children to schools of their choosing… 
+
+***
+
+This system as described, while somewhat bureaucratic, may seem reasonable, and perhaps economically efficient. Districts pay into the two tiers of funding and receive a per pupil lump-sum in return. Rich districts are net contributors while poor districts are net recipients. Districts can control their available revenue by changing their tax rate and also have some discretion over the WADA they report to the TEA. One may think that, provided the guaranteed revenue levels are set appropriately, the system can also be self-funding. 
+
+However there are two added features to Texas’ school finance system which make it both perpetually underfunded and inefficient. First tax rates are capped at \$1.17/\$100. This means once a district hits this cap its only means of raising extra revenue is gaming the WADA system. Even this eventually reaches a limit, forcing the district to hope its property values rise. This naturally affects predominantly property-poor districts, as they raise less revenue per penny of taxation than rich ones. Secondly, in addition to the contributions they make via Tiers I and II, wealthy districts are also forced to contribute all of the revenue they generate above a certain level of wealth\footnote{This is the result of finance-equalisation legislation passed in 1993 and taken into effect in the 1993/94 school year. Though named 'Robin Hood' by the press, the nickname belied the widespread ire the legislation would draw from economists, lawmakers and parents (rich and poor alike), and the two further rounds of lawsuits it would face.}. Each year TEA sets an upper bound on the wealth per WADA which a district can collect revenue from and then ‘recaptures’ all of the revenue generated by taxes on this proportion of wealth. For example Austin ISD paid \$177m in 2014/15 on tax revenue it generated in excess of the \$504,000/WADA cap. This means that once a district hits both the tax threshold and the recapture threshold it loses even the possibility of property booms generating extra revenue. While these are extremely inefficient, as they destroy wealth through negative capitalisation effects on property values, they present interesting settings for identification. 
+
+
+\section{Literature Review}
+\label{s:next}
+
+Texas' education system has been the subject of several previous studies, most notably Hoxby '04 and Hanushek and Rivkin '05. These papers in combination with several others provide the theoretical and empirical basis for this paper. I do not attempt to derive new methods or theories in this work, I simply aim to apply the work others have done to this setting. 
+
+Hoxby ’04 studies the stability of the recapture system in Texas, in particular its effects on housing valuation. This paper benefits immensley from Hoxby's explanation and analysis of the school financing system. For instance she empircally estimates that WADA rates will rise due to funding pressures placed on capped districts, but she finds that this occured in the 5\% richest districts WADA rates rose 24\% in response to the introduction of the Robin Hood system in 1994.\footnote{From 1.3 to 1.62 WADA per pupil}. This analysis drew my attention to this setting of capped spending as a potential source of exogenous variation. 
+
+Hanushek and Rivkin ‘05 use a matched panel to compare the importance of teacher-level variation in Texan schools on student performance to the effects of commonly observed variables like class size and teacher salary. In doing this they challenge the notion that observable inputs should have a causal impact on performance gains in students. They note that funding is allocated to schools which perform worse in order to help them improve, so we should not expect a positive funding parameter. They argue that teacher salary is calculated by a linear combination of years of experience and living-costs, and as experience is found to have no relation to performance neither variable should be expected to be positive. This provides a theory to test, namely that simple regressions of performance on funding should yield negative parameter estimates **do they** and that class-level effects should not be siginficant or large. 
+
+Lazear '01 provides a theory which this paper tests. He models optimal class size as inherently disruption-based. Students are considered to 'disrupt' the learning of others both voluntarily and involuntarily (e.g. through bad questions), and the rate of disruption determines the optimal class size. This optimal class size is decreasing in disruptiveness, clearly. Thus the paper suggests that environments typically assosciated with higher disruption-inducing factors like poverty should be more sensetive to class sizes **result?**. 
+
+Todd and Wolpin '03 provide the critical framework for this paper. In particular they address the strong assumptions required in order to make fixed-effects educational production functions (EPFs) provide unbiased or consistent parameter estimates, which are unlikely to apply here. They also address the dangers of over-controlling in education production functions. It was infeasibly in this study, like many they consider, to use family or student level data, and so proxies for these varianbles were used instead. For instance parental inteliigence was not measured, so the proportion of families in economic distress was used as a proxy. Todd and Wolpin '03 provide several reasons why this control is not only likely to be invalid *** but also likely to bias the estimates of parameters I do seek. For this reason this paper encourages a more skeptical perspective of the EPF approach and thus motivates my alternatives. 
+
+Tiebout '56 models local tax and spending rates as offers of consumption bundles made to 'consumer-voters'. This theory is easily applied to ISDs, considering them as offering tax rates and per student spending levels which homeowners can select or 'purchase' by moving to the district. Likewise homeowners can also choose different bundles if they dislike their current one by moving. In this sense redistribution of local revenue across districts affects the bundles offered \footnote{Hoxby shows this destroys billions of dollars of housing wealth} and encourages tax-competition between districts. This provides further reason to investigate tax competition between districts ***how exactly am I doing this?**
+
+The production function literature also includes several meta-studies, as mentioned earlier. 
+
+
+***Where am I getting my production function equation from?
+
+
+***.
+
+
+
+
+\section{Model}
+\label{s:next}
+
+Our ultimate aim is to estimate a production function of the form:
+
+$$Score = f(ability,resources,teacher,family,peers,community) + \epsilon$$
+
+Consider a simple linear model for academic performance over campuses $i=1,\ldots,n$; school districts $j=1,\ldots,957$; and periods $t=2003,\ldots,2011$ (where 2003 represents the academic year '02-'03):
+\begin{align*}
+\mathrm{Gr5.Score}_{ijt} = \beta_{0} 
+    &+ \beta_{1}  \mathrm{Gr4.Score}_{ijt-1} 
+    + \beta_{2}  \mathrm{Gr3.Score}_{ijt-2}    \\
+    &+ \beta_{3}  \mathrm{Per.Pupil.Exp}_{ijt} 
+    + \beta_{4}  \mathrm{Econ.Disadv.Per}_{ijt} \\
+    &+ \beta_{5}  \mathrm{T.Avg.Sal}_{ijt}   
+    + \beta_{6}  \mathrm{T.Avg.Exp}_{ijt}  \\
+    &+ \beta_{7}  \mathrm{Gr5.Class.Size}_{ijt} + \epsilon_{ijt}
+\end{align*}
+
+And another
+
+Consider a simple linear model for academic performance over campuses $i=1,\ldots,n$; school districts $j=1,\ldots,957$; and periods $t=2003,\ldots,2011$ (where 2003 represents the academic year '02-'03):
+\begin{align*}
+\mathrm{Gr10.Score}_{ijt} = \beta_{0} 
+    &+ \beta_{1}  \mathrm{Gr9.Score}_{ijt-1} 
+    + \beta_{2}  \mathrm{Per.Pupil.Exp}_{ijt} \\
+    &+ \beta_{3}  \mathrm{Econ.Disadv.Perc}_{ijt} 
+    + \beta_{4}  \mathrm{T.Avg.Sal}_{ijt}  \\
+    &+ \beta_{5}  \mathrm{T.Avg.Exp}_{ijt}  
+    + \beta_{6}  \mathrm{Gr10.Class.Size}_{ijt} + \epsilon_{ijt}
+\end{align*}
+
+
+Before estimating this model it is instructive to restrict it to more specialised cases and clearly step through the assumptions required for OLS to be an efficient, unbiased estimation strategy. This makes suggesting alternative estimation strategies much more intuitive.
+
+\section{Data}
+
+[distribution of revenue]
+
+**sampling shitt**
+
+The data used come several sources. From the TEA’s Public Education Information Management System (PEIMS) I form a panel of 957 elementary campuses recorded for each academic year between ‘02/’03-‘10/’11 inclusive. The panel I create is balanced as I drop all campuses for which there are missing entries **.  At the campus level I extract variables for 3rd, 4th and 5th grade TAKS pass-rates in reading and maths, as well campus-level expenditure, average teacher salary and experience …. At the district level I extract total revenue as well as state, federal and local revenue, total wealth, recaptured wealth, oil and gas value, tax rates …. I convert nominal dollar figures into 2002 dollars by using inflation rates for the South from the BEA.
+
+In addition to this I create proximity variables by accessing the Google Maps API and recording the distance of campuses within the district and in the neighbouring districts for each campus. These include a 10 minute radius variable, for the number of elementary schools within a 10 minute driving radius. I also create variables for key district information in neighbouring districts. For instance ** elementary which borders ** ISD has **.  
+
+\begin{figure}
+    \label{image-myimage}
+    \includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/dist_competition.png}
+    \caption{Schools located in adjacent districts. This shows the centre and suburbs of Dallas, which presents one setting to estimate tax competition. Note that not all these schools are complements, as the dots could compose primary, middle or high schools. Only complements are considered in the estimation.}
+\end{figure}
+
+
+\begin{figure}
+    \label{image-myimage}
+    \includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/web_scraper.png}
+    \caption{By crawling the Goolge Maps API this web scraper found distances between schools in adjacent districts, which can be used to estimate tax competition effects.}
+\end{figure}
+
+Selecting the panel in this manner offers several advantages over data used in other educational production function estimates. Firstly by choosing the ‘02/’03-‘10/’11 window I am able to avoid comparisons across different testing formats. During this period only the TAKS was used. Secondly by focusing on elementary schools and their performance in standardised tests I also dramatically reduce the severity of selection bias into and out of testing. By comparison studies which focus on the SAT/ACT scores as dependent variables often have difficulty overcoming selection into and out of testing based on ability. As the 3rd, 4th and 5th grade TAKS exams are relatively low stakes both for students and campuses, this reduces concerns about cheating or misreporting by campuses. Thirdly the administrative nature of these data mean that measurement error is unlikely ***.  Finally having within-campus variation and panel data allows fixed effects to control for some omitted variables, providing an advantage over cross-sectional estimates. 
+
+As these tests must be passed for students to reach the next grade their distributions are extremely positively skewed, which generates some barriers to inference due to insufficient test-score variation. However fortunately this problem abates as we consider student in high school, as these tests are harder and are failed more frequently. We can see this in figures ** and ** as the data is less clustered around the 90+\% passing region. I also account for participation rates by ****. SAT and ACT test scores were reported but discarded for this analysis due to concerns over selection into and out of participation, and the higher risks of cheating due to the high-stakes nature of these exams.
+
+
+\begin{figure}
+    \label{image-myimage}
+    \includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/wealthplot4.pdf}
+    \caption{Wealth Distributions across regions. Notice the medians around \$250k/pupil with outliers over \$2m/pupil. This wealth is the ISDs tax base, and the inequality encourages redistribution}
+\end{figure}
+
+\begin{figure}
+    \label{image-myimage}
+    \includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/wealth_axis.png}
+\end{figure}
+
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+
+
+\begin{figure}
+    \label{Can I see this label?}
+    \includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/gr5vis.pdf}
+    \caption{5th grade test scores coloured by year and region. The high pass rates cluster the results towards the \textgreater80\% region, reducing variance for estimation. Perhaps surprisingly, suburban areas in major cities appear to perform the worst.}
+\end{figure}
+
+\begin{figure}
+    \label{Can I see this label?}
+    \includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/Year_axis.png}
+    \includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/desc_axis.png}
+\end{figure}
+
+
+\begin{figure}
+    \label{image-myimage}
+    \includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/gr10vis.pdf}
+    \caption{10th grade test scores coloured by year and region. See that lower pass rates mean greater variance and therefore more precise parameter estimates. Darker colours to the left of the english scatter indicates the test was likely easier in later years. Fortunately this will mean it will be picked up by year fixed effects and won't affect our estimation.}
+\end{figure}
+
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+\section{Results}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+
+\begin{figure}
+    \label{image-myimage}
+    \includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/eng_reg_gr10.pdf}
+    \caption{My test image}
+\end{figure}
+
+
+
+\begin{figure}
+    \label{image-myimage}
+    \includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/math_reg_gr10.pdf}
+    \caption{My test image}
+\end{figure}
+
+\begin{figure}
+    \label{image-myimage}
+    \includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/eng_reg_gr5.pdf}
+    \caption{My test image}
+\end{figure}
+
+\begin{figure}
+    \label{image-myimage}
+    \includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/math_reg_gr5.pdf}
+    \caption{My test image}
+\end{figure}
+
+*******fourth grade math == ninth grade math!!!****
+
+
+\FloatBarrier
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+
+
+\section{Conclusion}
+
+Final Thoughts
+
+\makeatletter
+\renewcommand\@biblabel[1]{}
+\makeatother
+
+\begin{thebibliography}{9}
+
+\bibitem{2} 
+Chetty, Raj; Hendren, Nathaniel;  Kline, Patrick and Saez, Emmanuel, 2014.
+"Where is the Land of Opportunity? The Geography of Intergenerational Mobility in the United States",
+\textit{The Quarterly Journal of Economics}, (2014) 129 (4): 1553-1623. 
+
+\bibitem{2} 
+Coleman, James S., 1966.
+"Equality of Educational Opportunity Study",
+\textit{Inter-university Consortium for Political and Social Research}
+
+\bibitem{2} 
+Cullen, Julie Berry, 2003. 
+"The Impact of Fiscal Incentives on Student Disability Rates", 
+\textit{Journal of Public Economics}, 87(7-8):1557-89.
+
+\bibitem{2} 
+Greenwald, Rob, Hedges, Larry V.  and Laine, Richard D., 1956.
+"The Effect of School Resources on Student Achievement",
+\textit{Review of Educational Research}, Vol. 66, No. 3 (Autumn, 1996), pp. 361-396 (36 pages)
+
+\bibitem{2} 
+Hanushek, Eric A., 1997.
+"Assessing the Effects of School Resources on Student Performance: An Update",
+\textit{Educational Evaluation and Policy Analysis}, 19(2) Pages: pp. 141-164
+
+\bibitem{2} 
+Hanushek, Eric and  Rivkin, Steven G., 2012.
+The Distribution of Teacher Quality and Implications for Policy",
+\textit{Annual Review of Economics}, 2012, vol. 4, issue 1, 131-157
+
+\bibitem{2} 
+ Hoxby, Caroline M., 2001.
+"All School Finance Equalizations Are Not Created Equal",
+\textit{Quarterly Journal of Economics}, Vol. 116, No. 4 (November), 1189-1231.
+
+\bibitem{2} 
+ Hoxby, Caroline M and Kuziemko, Ilyana, 2004.
+"Robin Hood and His Not-So-Merry Plan: Capitalization and the Self-Destruction of Texas' School Finance Equalization Plan",
+\textit{NBER}, Working Paper No. 10722
+
+\bibitem{2} 
+Kane, Thomas J. and Staiger, Douglas O. , 2008.
+"Estimating Teacher Impacts on Student Achievement: An Experimental Evaluation",
+\textit{NBER}, Working Paper No. 14607
+
+\bibitem{2} 
+Krueger, Alan B., 1999.
+"Experimental Estimates of Education Production Functions",
+\textit{Quarterly Journal of Economics}, Vol. 114, no. 2 (May 1999): 497-532
+
+\bibitem{2} 
+Lazear, Edward P. 2001.
+"Educational Production",
+\textit{The Quarterly Journal of Economics}, Volume 116, Issue 3, August 2001, Pages 777–803,
+
+\bibitem{2} 
+Steven G. Rivkin, Eric A. Hanushek and John F. Kain, 2005. 
+"Teachers, Schools, and Academic Achievement," 
+\textit{Econometrica}, Econometric Society, vol. 73(2), pages 417-458, 03.
+
+
+\bibitem{2} 
+Texas Education Agency, Division of Performance Reporting, 2019-20,
+\textit{Academic Excellence Indicator System}, 2002-03 to 2010-11. Electronic files.
+
+
+\bibitem{2} 
+Tiebout, Charles M., 1956.
+"A Pure Theory of Local Expenditures",
+\textit{Journal of Political Economy}, Vol. 64, No. 5 (Oct., 1956), pp. 416-424 (9 pages)
+
+
+
+
+\bibitem{2} 
+Todd, Petra E. and Wolpin, Kenneth I., 2003.
+"On The Specification and Estimation of The Production Function for Cognitive Achievement",
+\textit{The Economic Journal}, 113(485):3-3 · February 2003
+
+
+
+
+
+
+
+
+\end{thebibliography}
+
+
+
+
+\end{document}
+

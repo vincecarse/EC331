@@ -29,30 +29,235 @@ gen num_adj_urb = total_miles_5r*var3
 gen num_adj_oth = total_miles_5r*var6
 #gen adj_exp = total_miles_5r*var6
 
-###      models      ###
-
 xtset campus year
 
+###      math      ###
+
+
+
+eststo clear
 
 #delimit ;
 
-xtreg taks_math_gr5 taks_math_gr4_lag1 
-taks_reading_gr3_lag2 per_pupil_exp econ_dis_stu_percent 
-teacher_avg_salary teacher_experience exp_w_dist  
-exp_sal exp gr5_class_size, fe ;
+quietly reg taks_math_gr5 taks_math_gr4_lag1 taks_math_gr3_lag2  
+per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience gr5_class_size;
+
+#delimit cr
+
+estadd local fe No
+
+eststo
+
+
+
+
+#delimit ;
+
+quietly xtreg taks_math_gr5 taks_math_gr4_lag1 taks_math_gr3_lag2  
+per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience gr5_class_size, fe ;
+
+#delimit cr
+
+estadd local fe Yes
+
+eststo
+
+
+
+
+#delimit ;
+
+quietly xtreg taks_math_gr5 taks_math_gr4_lag1 taks_math_gr3_lag2  
+per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience gr5_class_size i.year, fe ;
+
+#delimit cr
+
+estadd local fe Yes
+
+eststo
+
+
+
+
+#delimit ;
+
+quietly xtreg taks_math_gr5 taks_math_gr4_lag1 taks_math_gr3_lag2  
+per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience gr5_class_size i.year if var3, fe ;
+
+#delimit cr
+
+estadd local fe Yes
+
+eststo
+
+
+
+#delimit ;
+
+quietly xtreg taks_math_gr5 taks_math_gr4_lag1 taks_math_gr3_lag2  
+per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience gr5_class_size i.year if var4, fe ;
+
+#delimit cr
+
+estadd local fe Yes
+
+eststo
+
+
+#delimit ;
+
+quietly xtreg taks_math_gr5 taks_math_gr4_lag1 taks_math_gr3_lag2  
+per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience gr5_class_size i.year if var7, fe ;
+
+#delimit cr
+
+estadd local fe Yes
+
+eststo
+
+###
+
+
+#delimit ;
+
+
+esttab using math_gr5.tex, nodepvars mlabels(none) ar2 indicate("year fe = *year") nonotes addnotes(
+"(1),(2),(3) - Whole Sample"
+"(4) - Suburban Areas, Major Cities"
+"(5) - Urban Areas, Major Cities"
+"(6) - Rural Areas")
+
+title("Dependent Variable - Gr5 Math Score")
+coef(taks_math_gr5 "Gr5 Math Score"  taks_math_gr4_lag1   "Gr9 Math Lag" taks_math_gr3_lag2   "Gr3 Math Lag2"
+per_pupil_exp "Per Pupil Exp" econ_dis_stu_percent "Perc Econ Disadv"
+teacher_avg_salary "T Avg Sal" teacher_experience "T Exp"
+gr5_class_size "Class Size" _cons "Constant")
+
+ stats(N  fe, labels("N"))
+
+ ;
 
 #delimit cr
 
 
+###      english      ###
+
+
+eststo clear
+
 #delimit ;
 
-xtreg taks_reading_gr5 taks_reading_gr4_lag1 
-taks_reading_gr3_lag2 per_pupil_exp econ_dis_stu_percent 
-teacher_avg_salary teacher_experience exp_w_dist  
-exp_sal exp gr5_class_size, fe ;
+quietly reg taks_reading_gr5 taks_reading_gr4_lag1 taks_reading_gr3_lag2  
+per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience gr5_class_size;
 
 #delimit cr
 
+estadd local fe No
+
+eststo
+
+
+
+
+#delimit ;
+
+quietly xtreg taks_reading_gr5 taks_reading_gr4_lag1 taks_reading_gr3_lag2  
+per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience gr5_class_size, fe ;
+
+#delimit cr
+
+estadd local fe Yes
+
+eststo
+
+
+
+
+#delimit ;
+
+quietly xtreg taks_reading_gr5 taks_reading_gr4_lag1 taks_reading_gr3_lag2  
+per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience gr5_class_size i.year, fe ;
+
+#delimit cr
+
+estadd local fe Yes
+
+eststo
+
+
+
+
+#delimit ;
+
+quietly xtreg taks_reading_gr5 taks_reading_gr4_lag1 taks_reading_gr3_lag2  
+per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience gr5_class_size i.year if var3, fe ;
+
+#delimit cr
+
+estadd local fe Yes
+
+eststo
+
+
+
+#delimit ;
+
+quietly xtreg taks_reading_gr5 taks_reading_gr4_lag1 taks_reading_gr3_lag2  
+per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience gr5_class_size i.year if var4, fe ;
+
+#delimit cr
+
+estadd local fe Yes
+
+eststo
+
+
+#delimit ;
+
+quietly xtreg taks_reading_gr5 taks_reading_gr4_lag1 taks_reading_gr3_lag2  
+per_pupil_exp econ_dis_stu_percent 
+teacher_avg_salary teacher_experience gr5_class_size i.year if var7, fe ;
+
+#delimit cr
+
+estadd local fe Yes
+
+eststo
+
+###
+
+
+#delimit ;
+
+
+esttab using eng_gr5.tex, nodepvars mlabels(none) ar2 indicate("year fe = *year") nonotes addnotes(
+"(1),(2),(3) - Whole Sample"
+"(4) - Suburban Areas, Major Cities"
+"(5) - Urban Areas, Major Cities"
+"(6) - Rural Areas")
+
+title("Dependent Variable - Gr5 English Score")
+coef(taks_reading_gr5 "Gr5 English Score"  taks_reading_gr4_lag1   "Gr4 Eng Lag" taks_reading_gr3_lag2   "Gr3 Eng Lag2"
+per_pupil_exp "Per Pupil Exp" econ_dis_stu_percent "Perc Econ Disadv"
+teacher_avg_salary "T Avg Sal" teacher_experience "T Exp"
+gr5_class_size "Class Size" _cons "Constant")
+
+ stats(N fe, labels("N"))
+
+ ;
+
+#delimit cr
 
 
 

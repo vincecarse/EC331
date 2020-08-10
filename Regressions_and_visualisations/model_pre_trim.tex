@@ -1,0 +1,286 @@
+
+\documentclass[11pt]{article}
+
+\usepackage{pdfpages}
+
+
+\usepackage{fancyheadings}
+\usepackage{pstricks,pst-node,psfrag}
+\usepackage{amsthm,amssymb,amsmath}
+
+\newcommand{\bbeta}{\mbox{\boldmath $\beta$}}
+\newcommand{\beps}{\mbox{\boldmath $\epsilon$}}
+\newcommand{\bX}{\mbox{\boldmath $X$}}
+\newcommand{\bY}{\mbox{\boldmath $Y$}}
+\newcommand{\bI}{\mbox{\boldmath $I$}}
+\newcommand{\N}{\mathcal{N}}
+\renewcommand{\baselinestretch}{1.2}
+
+
+\begin{document}
+
+\setlength{\baselineskip}{0.3in} 
+
+A Right not Granted\footnote{footnotes working fine}. A Wrong not Righted.
+Spending and performance in Texan Public Schools
+
+\section{Introduction}
+\label{s:intro}
+
+This paper estimates the educational return to spending in Texan public schools using two methods, which to my knowledge are previously unexplored. Arbitrary restrictions on tax rates due to the unconstitutionality of statewide taxes induced some cash-starved districts to max out their tax rates, presenting windows in which their revenue was completely dependent on property values and state aid. Thus changes in revenue may have been exogenous to changes in school performance. Further to this, random flucuations in the oil price provided positive and negative revenue shocks which may constitute a viable instrument for district revenue, allowing for a more plausible estimate of the causal impact of spending on school performance. These combined with the time-series, campus-level nature of the data allows for estimates which plausibly address some endogeneity concerns which plague other educational production function estimates. Many remain, and are addressed in due course, as are the assumptions on which these estimates rest. The most salient elements of Texas' "byzantine"[10] school finance system are now described, followed by a brief literature review and then the formal results. 
+
+Texas is partitioned into 1026* independent school districts (ISDs), each a kind of local government with the power to tax property and allocate funds between the schools within it. Some districts are vast, sprawling entities. Dallas ISD for instance educated over 150,000 in 2018/19 with an operating budget of over 1.8b. [dallas wiki]. Others are more modest, like Cayuga ISD which is home to just three schools: an elementary, middle and high school, and under 600 students [cayuga wiki]. While some districts cater to non-public schools like charter, orphanage or prison schools, these are not the subject of this paper.
+
+Districts are funded through a combination of local, state and federal revenue. 
+
+
+
+
+Almost twenty years would pass until Texans would successfully sue the Texan Commisioner of Education for discrimination against students in poor districts[3] in Edgewood Independent School District v. Kirby (Tex 1989). During the trial it was found that the "[the] wealthiest district [have] over $ 14,000,000 of property wealth per student, while the poorest [have] approximately $ 20,000; this disparity reflects a 700 to 1 ratio"[4]. While as Americans the students in Edgewood ISD had no right to education, as Texans it was decided they did. The solution forged by the wrestle between parents, lawmakers and judges which followed was finance-equalisation legislation passed in 1993 and taken into effect in the 1993/94 school year. Though nicknamed 'Robin Hood' by the press, this belied the widespread ire the legislation would draw from economists[5], lawmakers[6] and parents[7] (rich and poor alike), and the two further rounds of lawsuits it would face. In January 2019 Republican Governor Greg Abbott tweeted: "We must put Robin Hood school funding on a path of extinction", later congratulating himself (more mutedly) for "reform" on the issue as the 86th Legislative Session ended [8].Far from being a unique, arcane example, interesting only in its novelty, Texas' school finance system mirrors dozens[9] of other states which rely on similar local funding models; as do its problems. 
+
+The "byzantine"[10] nature of the system presents two intruiging settings to the econometrician, which to my knowledge are previously unexplored. Arbitrary restrictions on tax rates due to the unconstitutionality of statewide taxes induced some cash-starved districts to max out their tax rates, presenting windows in which their revenue was completely dependent on property values and state aid. Further to this, random flucuations in the oil price provided positive and negative revenue shocks which may constitute a viable instrument for district revenue, allowing for a more plausible estimate of the causal impact of spending on school performance. These combined with the time-series, campus-level nature of the data allows for estimates which plausibly address some endogeneity concerns which plague other educational production function estimates. Many remain, and are addressed in due course. 
+
+
+\section{The Educational Landscape}
+\label{s:next}
+
+
+
+
+\section{Literature Review}
+\label{s:next}
+
+Texas' education system has been the subject of several previous studies, most notably Hoxby '04, Hanushek and Rivkin '05 and 
+
+
+
+Our ultimate aim is to estimate a production function of the form:
+
+$$Score = f(ability,resources,teacher,family,peers,community) + \epsilon$$
+
+Once we have done this policy questions can be answered by investigating the parameters obtained from this estimate. For example how does the effect of class size differ in different communities, what proportion of the variation in expenditure estimates can be attributed to district-level effects?
+
+[Obviously I'll need to put the general background, data and theory here too. (Importantly I need to talk about data selection and assumptions about sampling process. That is, that the data I have dropped were dropped randomly).]
+
+\section{Model}
+\label{s:next}
+
+Consider a simple linear model for academic performance over campuses $i=1,\ldots,n$; school districts $j=1,\ldots,957$; and periods $t=2003,\ldots,2011$ (where 2003 represents the academic year '02-'03):
+  \begin{align*}
+\mathrm{Gr5.Score}_{ijt} = \beta_{0} 
+&+ \beta_{1}  \mathrm{Gr4.Score}_{ijt-1} 
++ \beta_{2}  \mathrm{Gr3.Score}_{ijt-2}    \\
+&+ \beta_{3}  \mathrm{Per.Pupil.Exp}_{ijt} 
++ \beta_{4}  \mathrm{Econ.Disadv.Per}_{ijt} \\
+&+ \beta_{5}  \mathrm{T.Avg.Sal}_{ijt}   
++ \beta_{6}  \mathrm{T.Avg.Exp}_{ijt}  \\
+&+ \beta_{7}  \mathrm{Gr5.Class.Size}_{ijt} + \epsilon_{ijt}
+\end{align*}
+
+And another
+
+Consider a simple linear model for academic performance over campuses $i=1,\ldots,n$; school districts $j=1,\ldots,957$; and periods $t=2003,\ldots,2011$ (where 2003 represents the academic year '02-'03):
+  \begin{align*}
+\mathrm{Gr10.Score}_{ijt} = \beta_{0} 
+&+ \beta_{1}  \mathrm{Gr9.Score}_{ijt-1} 
++ \beta_{2}  \mathrm{Per.Pupil.Exp}_{ijt} \\
+&+ \beta_{3}  \mathrm{Econ.Disadv.Perc}_{ijt} 
++ \beta_{4}  \mathrm{T.Avg.Sal}_{ijt}  \\
+&+ \beta_{5}  \mathrm{T.Avg.Exp}_{ijt}  
++ \beta_{6}  \mathrm{Gr10.Class.Size}_{ijt} + \epsilon_{ijt}
+\end{align*}
+
+
+Before estimating this model it is instructive to restrict it to more specialised cases and clearly step through the assumptions required for OLS to be an efficient, unbiased estimation strategy. This makes suggesting alternative estimation strategies much more intuitive.
+
+\subsection{Within district, one time period}
+\label{ss:nextsub1}
+
+Let the first restriction be j = 1 (WLOG let this represent DALLAS ISD) and t = 2006. These are arbitrary parameter values. The model then can be simplified to:
+  
+  \begin{align*}
+\mathrm{Gr5.Avg}_{i} = \beta_{0} 
+&+ \beta_{1}  \mathrm{Gr4.Avg.Lag1}_{i} 
++ \beta_{2}  \mathrm{Gr3.Avg.Lag2}_{i}    \\
+&+ \beta_{3}  \mathrm{Per.Pupil.Exp}_{i} 
++ \beta_{4}  \mathrm{Econ.Disadv.Perc}_{i} \\
+&+ \beta_{5}  \mathrm{T.Avg.Sal}_{i}   
++ \beta_{6}  \mathrm{T.Avg.Exp}_{i}  \\
+&+ \beta_{7}  \mathrm{Gr5.Class.Size}_{i} + \epsilon_{i}
+\end{align*}
+
+In making these restrictions we can automatically rule out concerns due to time-trends and some spatial autocorrelation, however we must still be confident that the GM assumptions are satisfied.
+
+\subsubsection{Multicollinearity}
+
+We require that the matrix $\bX'\bX$ where
+
+$$\bX = \left( \begin{array}{cc}
+1 & x_1' \\ 1 & x_2' \\ \vdots & \vdots \\ 1 & x_n' \end{array}
+\right)$$,    
+$$x_i = \left( \begin{array}{cc}
+              \mathrm{Gr4.Avg.Lag1}_{i} \\  \mathrm{Gr3.Avg.Lag2}_{i} \\ \vdots \\ \mathrm{Gr5.Class.Size}_{i} \end{array}
+              \right)$$ be invertible. 
+
+\subsubsection{Exogeneity}
+
+Measurement error, simultaneity.
+
+\subsubsection{Homoskedasticity}
+
+Downward bias, local spatial autocorrelation. 
+
+
+\subsubsection{Normality}
+
+??
+  
+  \subsection{Within district, panel}
+\label{ss:nextsub2}
+
+A simple linear model for performance in Dallas ISD:
+  \begin{align*}
+\mathrm{Gr5.Avg}_{it} = \beta_{0} 
+&+ \beta_{1}  \mathrm{Gr4.Avg.Lag1}_{it} 
++ \beta_{2}  \mathrm{Gr3.Avg.Lag2}_{it}    \\
+&+ \beta_{3}  \mathrm{Per.Pupil.Exp}_{it} 
++ \beta_{4}  \mathrm{Econ.Disadv.Per}_{it} \\
+&+ \beta_{5}  \mathrm{T.Avg.Sal}_{it}   
++ \beta_{6}  \mathrm{T.Avg.Exp}_{it}  \\
+&+ \beta_{7}  \mathrm{Gr5.Class.Size}_{it} + \epsilon_{it}
+\end{align*}
+
+\subsection{Across districts, one time period}
+\label{ss:nextsub3}
+
+A simple linear model for performance in 2006:
+  \begin{align*}
+\mathrm{Gr5.Avg}_{ij} = \beta_{0} 
+&+ \beta_{1}  \mathrm{Gr4.Avg.Lag1}_{ij} 
++ \beta_{2}  \mathrm{Gr3.Avg.Lag2}_{ij}    \\
+&+ \beta_{3}  \mathrm{Per.Pupil.Exp}_{ij} 
++ \beta_{4}  \mathrm{Econ.Disadv.Per}_{ij} \\
+&+ \beta_{5}  \mathrm{T.Avg.Sal}_{ij}   
++ \beta_{6}  \mathrm{T.Avg.Exp}_{ij}  \\
+&+ \beta_{7}  \mathrm{Gr5.Class.Size}_{ij} + \epsilon_{ij}
+\end{align*}
+
+\subsection{Across districts, panel}
+\label{ss:nextsub4}
+
+This linear model utilises all our data.
+\begin{align*}
+\mathrm{Gr5.Avg}_{ijt} = \beta_{0} 
+&+ \beta_{1}  \mathrm{Gr4.Avg}_{ijt-1} 
++ \beta_{2}  \mathrm{Gr3.Avg}_{ijt-2}    \\
+&+ \beta_{3}  \mathrm{Per.Pupil.Exp}_{ijt} 
++ \beta_{4}  \mathrm{Econ.Disadv.Per}_{ijt} \\
+&+ \beta_{5}  \mathrm{T.Avg.Sal}_{ijt}   
++ \beta_{6}  \mathrm{T.Avg.Exp}_{ijt}  \\
+&+ \beta_{7}  \mathrm{Gr5.Class.Size}_{ijt} + \epsilon_{ijt}
+\end{align*}
+
+where $\epsilon_{ijt}=\alpha_{i}+\mu_{j}+\upsilon_{ijt}$ and
+$$\upsilon_{ijt} \sim \N(0,\sigma^2) \hspace{0.1in} \mbox{for all } i,j,t.$$
+  
+  That is  our errors are composed of time-invariant, campus-level and district-level heterogeneity and an idiosyncratic error. 
+
+\section{Data}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+\includegraphics[width=\textwidth, scale =0.75]{/Users/vincentcarse/Desktop/gr10plots.pdf}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends.
+
+\includegraphics[width=\textwidth, scale = 0.75]{/Users/vincentcarse/Desktop/gr5plots.pdf}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+
+\section{Results}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+\includegraphics[width=\textwidth, scale =1]{/Users/vincentcarse/Desktop/eng_reg_gr10.pdf}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+
+\includegraphics[width=\textwidth, scale = 1]{/Users/vincentcarse/Desktop/math_reg_gr10.pdf}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+
+\includegraphics[width=\textwidth, scale = 1]{/Users/vincentcarse/Desktop/eng_reg_gr5.pdf}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+
+\includegraphics[width=\textwidth, scale = 1]{/Users/vincentcarse/Desktop/math_reg_gr5.pdf}
+
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+
+
+\section{Estimation Strategy}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+\subsection{Non-Linear Models}
+
+GMM estimation.
+
+\subsection{Dynamic Panel Model}
+
+Small T (9), large N (957). 
+
+
+\begin{thebibliography}{9}
+
+\bibitem{sup_court} 
+Michel Goossens, Frank Mittelbach, and Alexander Samarin. 
+\textit{The \LaTeX\ Companion}. 
+Addison-Wesley, Reading, Massachusetts, 1993.
+
+\bibitem{2} 
+Albert Einstein. 
+\textit{Zur Elektrodynamik bewegter K{\"o}rper}. (German) 
+[\textit{On the electrodynamics of moving bodies}]. 
+Annalen der Physik, 322(10):891–921, 1905.
+
+\bibitem{3} 
+Knuth: Computers and Typesetting,
+\\\texttt{http://www-cs-faculty.stanford.edu/\~{}uno/abcde.html}
+\end{thebibliography}
+
+
+
+\end{document}
+

@@ -22,7 +22,7 @@ Years = [2003,
 
 #from BLS, 2003-2011 normalised
 
-data = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/balanced_panel.csv')
+data = pd.read_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/balanced_panel_hs.csv')
 
 
 a = []
@@ -44,4 +44,4 @@ for i in money_vars:
     vals = data[i]/data['CPI']
     data[i] = vals
 
-data.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/balanced_panel_real2.csv')
+data.to_csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/balanced_panel_real_hs.csv')

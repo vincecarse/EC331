@@ -1,0 +1,330 @@
+
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in,footskip=0.25in]{geometry}
+\usepackage{pdfpages}
+\usepackage{placeins}
+
+
+\usepackage{fancyheadings}
+\usepackage{pstricks,pst-node,psfrag}
+\usepackage{amsthm,amssymb,amsmath}
+
+\newcommand{\bbeta}{\mbox{\boldmath $\beta$}}
+\newcommand{\beps}{\mbox{\boldmath $\epsilon$}}
+\newcommand{\bX}{\mbox{\boldmath $X$}}
+\newcommand{\bY}{\mbox{\boldmath $Y$}}
+\newcommand{\bI}{\mbox{\boldmath $I$}}
+\newcommand{\N}{\mathcal{N}}
+\renewcommand{\baselinestretch}{1.2}
+
+
+\begin{document}
+
+
+
+\setlength{\baselineskip}{0.3in} 
+
+\tableofcontents
+\clearpage
+
+\section{Introduction}
+\label{s:intro}
+
+The economics of public education remains a deeply contested field. Essential questions like the impact of class sizes on student performance, the importance of teacher quality and the fairness of local taxation continue to provoke disputes between leading economists in the field [hedges vs hanushek]. Few can doubt the importance of these questions in designing policy. 
+
+Texas is a strong subject to investigate some of these questions for several reasons. It sets a state-wide curriculum and requires common standardised testing by its primary and secondary students, removing the possibility of test or curriculum variation from biasing estimates of resource effects. It has a school finance system with several quirks which provide the possibility of exogenous variation in spending and other independent variables. Size ****blank****  Moreover its public education system has been the subject of several previous detailed studies which can be built upon. These results may be externally valid within American states which operate a hybrid local/state-funded education system. 
+
+The "byzantine"\footnote{byzantine quote} nature of the system will now be unpacked. 
+
+Texas is partitioned into 1026* independent school districts (ISDs), each a kind of local government with the power to tax property and allocate funds between the schools within it. Some districts are vast, sprawling entities. Dallas ISD for instance educated over 150,000 in 2018/19 with an operating budget of over \$1.8b\footnote{Dallas Wiki}. Others are more modest, like Cayuga ISD which is home to just three schools: an elementary, middle and high school, and under 600 students \footnote{cayuga wiki}. While some districts cater to non-public schools like charter, orphanage or prison schools, these are not the subject of this paper. Districts are funded through a combination of local, state and federal revenue. 
+
+Texas’ curriculum is standardised across all public schools and known as the Texas Essential Knowledge and Skills (TEKS), which was established in 1998. Between grades 3-11 students are required to complete a common standardised test based on the TEKS to pass to the next grade. This testing existed as the Texas Assessment of Academic Skills (TAAS) from ‘91/’92-‘01/’02, Texas Assessment of Knowledge and Skills (TAKS) from ‘02/’03-‘11/’12 and as the State of Texas Assessments of Academic Readiness (STAAR) since ‘12/’13. Testing is compulsory for students in public schools. These grades are reported as a ‘percentage passed’ figure for each grade within each campus, alongside a participation rate for the campus as a whole. As these tests must be passed for students to reach the next grade their distributions are extremely positively skewed. To deal with this ***. I also account for participation rates by… 
+
+[positively skewed performance]
+
+School funding originates from a combination of local, state and federal revenue, but is ultimately allocated by political decisions made by the TEA, the State and federal governments, and local districts themselves. This system has been described as ‘byzantine’ [court comment] but is particularly important to understand, as these decisions inform the interpretation of resource parameters. For instance a simple regression of reading and math performance on total district revenue both yield negative parameter estimates and explain a miniscule proportion of total variation in test scores. This may be surprising if we didn’t know that the TEA redistributes funding across districts in order to make the system fairer. 
+
+[distribution of revenue]
+
+There is enormous variation in the per-pupil tax bases of each district\footnote{In Edgewood Independent School District v. Kirby (Tex 1989) it was found that the "[the] wealthiest district [have] over \$14,000,000 of property wealth per student, while the poorest [have] approximately \$20,000; this disparity reflects a 700 to 1 ratio". }, leading to vastly different local revenue collection. Not only does Texas have cities with wealthy residential suburbs and poor inner cities but it also boasts oil refineries, heavy manufacturing alongside vast rural area. All of these are contained within school districts, and all are viable sources of taxation. To correct this inequality the TEA allocates funding across districts via the Foundation School Program (FSP), a series of formulas which calculate the contributions a district must make to the state and the state-aid a district receives. 
+
+The FSP operates under three ‘tiers’ of funding, a ‘guaranteed’ tier (Tier I) for all students, an ‘incentive’ tier (Tier II) and a separate tier for capital expenditures (Tier III). These tiers each have a system of contributions and receipts. Tier 3 does not concern the results in this paper. Funding levels are decided at the per pupil level, which is either measured using Average Daily Attendance (ADA) or Weighted Average Daily Attendance (WADA). WADA is decided by a range of weights ***
+  
+  
+  Tier I funding centres on a ‘basic allotment’ of funding per pupil to be allocated to each district. This amount is set by the State legislature and was \$5190/ADA in ‘19/’20. The basic allotment is then adjusted to account for differences in size, cost and programs offered between the districts. Districts must fund their Tier I entitlement from local revenue in proportion to their tax wealth and tax rate. CTR… Some districts are wealthy enough to self-fund their Tier I allocation, while poorer ones must rely a combination of local tax revenue and state support
+
+Tier 2 is based around a district’s tax rate. For each penny of tax between \$1.00 and \$1.06 per \$100 which a district sets, a district receives a variable dollar amount per WADA (\$44.30 in ‘11/’12) and for each penny between \$1.06 and \$1.17 a district receives \$31.95 per WADA. This tier is designed to encourage districts to raise their tax rates. Just as in Tier I some districts are also wealthy enough to self-fund their Tier II allocation, and others must rely on state and local sources.
+
+While school boards have no direct control over the FSP, they make two decisions which influence their available funding: a tax rate to levy on property owners and a total number of ‘weighted’ students to report to the TEA. Weighted students 
+
+These directly affect their Tier II allocation. 
+
+State governments set … The federal government …
+
+Teacher salaries, class sizes and hiring decisions are all made at the district level… 
+
+Parents have discretion in sending their children to schools of their choosing… 
+
+This system as described, while somewhat bureaucratic, may seem reasonable, and perhaps economically efficient. Districts pay into the two tiers of funding and receive a per pupil lump-sum in return. Rich districts are net contributors while poor districts are net recipients. Districts can control their available revenue by changing their tax rate and also have some discretion over the WADA they report to the TEA. One may think that, provided the guaranteed revenue levels are set appropriately, the system can also be self-funding. 
+
+However there are two added features to Texas’ school finance system which make it both perpetually underfunded and inefficient. First tax rates are capped at \$1.17/\$100. This means once a district hits this cap its only means of raising extra revenue is gaming the WADA system. Even this eventually reaches a limit, forcing the district to hope its property values rise. This naturally affects predominantly property-poor districts, as they raise less revenue per penny of taxation than rich ones. Secondly, in addition to the contributions they make via Tiers I and II, wealthy districts are also forced to contribute all of the revenue they generate above a certain level of wealth\footnote{This is the result of finance-equalisation legislation passed in 1993 and taken into effect in the 1993/94 school year. Though named 'Robin Hood' by the press, the nickname belied the widespread ire the legislation would draw from economists, lawmakers and parents (rich and poor alike), and the two further rounds of lawsuits it would face.}. Each year TEA sets an upper bound on the wealth per WADA which a district can collect revenue from and then ‘recaptures’ all of the revenue generated by taxes on this proportion of wealth. For example Austin ISD paid \$177m in 2014/15 on tax revenue it generated in excess of the \$504,000/WADA cap. This means that once a district hits both the tax threshold and the recapture threshold it loses even the possibility of property booms generating extra revenue. While these are extremely inefficient, as they destroy wealth through negative capitalisation effects on property values, they present interesting settings for identification. 
+
+
+
+
+\section{Literature Review}
+\label{s:next}
+
+Texas' education system has been the subject of several previous studies, most notably Hoxby '04, Hanushek and Rivkin '05 and 
+
+
+
+Our ultimate aim is to estimate a production function of the form:
+
+$$Score = f(ability,resources,teacher,family,peers,community) + \epsilon$$
+
+Once we have done this policy questions can be answered by investigating the parameters obtained from this estimate. For example how does the effect of class size differ in different communities, what proportion of the variation in expenditure estimates can be attributed to district-level effects?
+
+[Obviously I'll need to put the general background, data and theory here too. (Importantly I need to talk about data selection and assumptions about sampling process. That is, that the data I have dropped were dropped randomly).]
+
+\section{Model}
+\label{s:next}
+
+Consider a simple linear model for academic performance over campuses $i=1,\ldots,n$; school districts $j=1,\ldots,957$; and periods $t=2003,\ldots,2011$ (where 2003 represents the academic year '02-'03):
+  \begin{align*}
+\mathrm{Gr5.Score}_{ijt} = \beta_{0} 
+&+ \beta_{1}  \mathrm{Gr4.Score}_{ijt-1} 
++ \beta_{2}  \mathrm{Gr3.Score}_{ijt-2}    \\
+&+ \beta_{3}  \mathrm{Per.Pupil.Exp}_{ijt} 
++ \beta_{4}  \mathrm{Econ.Disadv.Per}_{ijt} \\
+&+ \beta_{5}  \mathrm{T.Avg.Sal}_{ijt}   
++ \beta_{6}  \mathrm{T.Avg.Exp}_{ijt}  \\
+&+ \beta_{7}  \mathrm{Gr5.Class.Size}_{ijt} + \epsilon_{ijt}
+\end{align*}
+
+And another
+
+Consider a simple linear model for academic performance over campuses $i=1,\ldots,n$; school districts $j=1,\ldots,957$; and periods $t=2003,\ldots,2011$ (where 2003 represents the academic year '02-'03):
+  \begin{align*}
+\mathrm{Gr10.Score}_{ijt} = \beta_{0} 
+&+ \beta_{1}  \mathrm{Gr9.Score}_{ijt-1} 
++ \beta_{2}  \mathrm{Per.Pupil.Exp}_{ijt} \\
+&+ \beta_{3}  \mathrm{Econ.Disadv.Perc}_{ijt} 
++ \beta_{4}  \mathrm{T.Avg.Sal}_{ijt}  \\
+&+ \beta_{5}  \mathrm{T.Avg.Exp}_{ijt}  
++ \beta_{6}  \mathrm{Gr10.Class.Size}_{ijt} + \epsilon_{ijt}
+\end{align*}
+
+
+Before estimating this model it is instructive to restrict it to more specialised cases and clearly step through the assumptions required for OLS to be an efficient, unbiased estimation strategy. This makes suggesting alternative estimation strategies much more intuitive.
+
+\section{Data}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+\begin{figure}
+\label{image-myimage}
+\includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/gr5vis.pdf}
+\caption{My test image}
+\end{figure}
+
+
+\begin{figure}
+\label{image-myimage}
+\includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/gr10vis.pdf}
+\caption{My test image}
+\end{figure}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+\section{Results}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+
+\begin{figure}
+\label{image-myimage}
+\includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/eng_reg_gr10.pdf}
+\caption{My test image}
+\end{figure}
+
+
+
+\begin{figure}
+\label{image-myimage}
+\includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/math_reg_gr10.pdf}
+\caption{My test image}
+\end{figure}
+
+\begin{figure}
+\label{image-myimage}
+\includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/eng_reg_gr5.pdf}
+\caption{My test image}
+\end{figure}
+
+\begin{figure}
+\label{image-myimage}
+\includegraphics[width=1\textwidth]{/Users/vincentcarse/Desktop/math_reg_gr5.pdf}
+\caption{My test image}
+\end{figure}
+
+\FloatBarrier
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+
+
+\section{Estimation Strategy}
+
+Fixed effects is likely not to be appropriate in the presence of time trends. 
+
+\subsection{Non-Linear Models}
+
+GMM estimation.
+
+\subsection{Dynamic Panel Model}
+
+Small T (9), large N (957). 
+
+
+\makeatletter
+\renewcommand\@biblabel[1]{}
+\makeatother
+
+\begin{thebibliography}{9}
+
+\bibitem{sup_court} 
+Michel Goossens, Frank Mittelbach, and Alexander Samarin. 
+\textit{The \LaTeX\ Companion}. 
+Addison-Wesley, Reading, Massachusetts, 1993.
+
+\bibitem{2} 
+Albert Einstein. 
+\textit{Zur Elektrodynamik bewegter K{\"o}rper}. (German) 
+[\textit{On the electrodynamics of moving bodies}]. 
+Annalen der Physik, 322(10):891–921, 1905.
+
+\bibitem{3} 
+Knuth: Computers and Typesetting,
+\\\texttt{http://www-cs-faculty.stanford.edu/\~{}uno/abcde.html}
+\end{thebibliography}
+
+
+
+\end{document}
+

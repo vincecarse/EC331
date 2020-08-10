@@ -1,0 +1,39 @@
+
+
+library(ggplot2)
+library(viridis)
+data<- read.csv('/Users/vincentcarse/Desktop/Thesis/Texas_Education/Regression/VAM_reg/balanced_panel_stata_real_hs.csv')
+data1 <- subset(data, district == 14906)
+
+#data1$Campus = data1$Campus - 57905000
+
+data1$campus= as.factor(data1$campus)
+
+
+ggplot(data1,aes(x=taks_math_gr9_lag1,y=taks_math_gr10,colour = per_pupil_exp)) + geom_point() +
+scale_color_viridis()
+
+
+57905     180
+220905    117
+71902      90
+79907      81
+227901     81
+15915      63
+15907      63
+57909      63
+71905      63
+101907     63
+220901     54
+15910      54
+57914      45
+61902      45
+101920     45
+31901      45
+101902     45
+178904     45
+14906      36
+101914     36
+43910      36
+240903     36
+18
