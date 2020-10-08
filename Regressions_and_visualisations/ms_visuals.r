@@ -32,3 +32,11 @@ ggplot(ms,aes(var,dist_total_val_per_pupil)) + geom_boxplot(aes(colour = Descrip
         
 
 colnames(ms)
+
+ggplot(ms,aes(TAKS_part))+geom_histogram(colour = 'white', fill = 'salmon')+ theme(aspect.ratio=1)+labs(y = 'Count(Elementary Schools)')
+
+
+
+
+
+length(unique(ms$grade_span))

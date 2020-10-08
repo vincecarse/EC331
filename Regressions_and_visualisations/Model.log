@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.8.19)  10 AUG 2020 03:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.8.19)  10 AUG 2020 14:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -430,6 +430,10 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
 LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
 )
+(/usr/local/texlive/2019/texmf-dist/tex/latex/bbold/bbold.sty
+Package: bbold 1994/04/06 Bbold symbol package
+LaTeX Font Info:    Redeclaring math alphabet \mathbb on input line 42.
+)
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
 
@@ -537,11 +541,14 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip63
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 27.
+Package hyperref Info: Option `colorlinks' set `true' on input line 28.
 
 (./Model.aux
 
 LaTeX Warning: Label `image-myimage' multiply defined.
+
+
+LaTeX Warning: Label `s:next' multiply defined.
 
 
 LaTeX Warning: Label `image-myimage' multiply defined.
@@ -556,7 +563,7 @@ LaTeX Warning: Label `image-myimage' multiply defined.
 LaTeX Warning: Label `Can I see this label?' multiply defined.
 
 
-LaTeX Warning: Label `s:next' multiply defined.
+LaTeX Warning: Label `image-myimage' multiply defined.
 
 
 LaTeX Warning: Label `image-myimage' multiply defined.
@@ -624,20 +631,20 @@ LaTeX Warning: Label `2' multiply defined.
 )
 \openout1 = `Model.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -712,7 +719,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-Package hyperref Info: Link coloring ON on input line 29.
+Package hyperref Info: Link coloring ON on input line 30.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -722,9 +729,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count162
 )
-LaTeX Info: Redefining \ref on input line 29.
-LaTeX Info: Redefining \pageref on input line 29.
-LaTeX Info: Redefining \nameref on input line 29.
+LaTeX Info: Redefining \ref on input line 30.
+LaTeX Info: Redefining \pageref on input line 30.
+LaTeX Info: Redefining \nameref on input line 30.
 
 (./Model.out) (./Model.out)
 \@outlinefile=\write4
@@ -757,261 +764,309 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 <special> ps:tx@Dict begin  gsave STV CP T /ps@rot 0 def grestore  end
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for U+msa on input line 41.
+LaTeX Font Info:    Try loading font information for U+msa on input line 42.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 41.
+LaTeX Font Info:    Try loading font information for U+msb on input line 42.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [2
 
-] [3]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 61.
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/omlcmr.fd
+]
+</Users/vincentcarse/Desktop/tex_trib1.png, id=55, 719.68875pt x 510.90875pt>
+File: /Users/vincentcarse/Desktop/tex_trib1.png Graphic file (type png)
+<use /Users/vincentcarse/Desktop/tex_trib1.png>
+Package pdftex.def Info: /Users/vincentcarse/Desktop/tex_trib1.png  used on inp
+ut line 52.
+(pdftex.def)             Requested size: 452.9679pt x 321.57018pt.
+ [3 </Users/vincentcarse/Desktop/tex_trib1.png>]
+</Users/vincentcarse/Desktop/tex_trib2.png, id=68, 748.7975pt x 500.87125pt>
+File: /Users/vincentcarse/Desktop/tex_trib2.png Graphic file (type png)
+<use /Users/vincentcarse/Desktop/tex_trib2.png>
+Package pdftex.def Info: /Users/vincentcarse/Desktop/tex_trib2.png  used on inp
+ut line 64.
+(pdftex.def)             Requested size: 452.9679pt x 302.99364pt.
+ [4] [5 </Users/vincentcarse/Desktop/tex_trib2.png>]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 72.
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <9> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 61.
- [4] [5] [6]
-</Users/vincentcarse/Desktop/dist_competition.png, id=90, 988.69376pt x 781.921
-25pt>
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 72.
+
+[6] [7]
+
+LaTeX Warning: Command \textgreater invalid in math mode on input line 102.
+
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 102.
+
+LaTeX Warning: Command \textgreater invalid in math mode on input line 102.
+
+[8] [9] [10]
+LaTeX Font Info:    Try loading font information for U+bbold on input line 200.
+
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/bbold/Ubbold.fd)
+[11]
+</Users/vincentcarse/Desktop/dist_competition.png, id=141, 988.69376pt x 781.92
+125pt>
 File: /Users/vincentcarse/Desktop/dist_competition.png Graphic file (type png)
 <use /Users/vincentcarse/Desktop/dist_competition.png>
 Package pdftex.def Info: /Users/vincentcarse/Desktop/dist_competition.png  used
- on input line 109.
+ on input line 221.
 (pdftex.def)             Requested size: 452.9679pt x 358.23254pt.
-
-[7]
-</Users/vincentcarse/Desktop/web_scraper.png, id=98, 1113.15875pt x 906.38625pt
->
-File: /Users/vincentcarse/Desktop/web_scraper.png Graphic file (type png)
-<use /Users/vincentcarse/Desktop/web_scraper.png>
-Package pdftex.def Info: /Users/vincentcarse/Desktop/web_scraper.png  used on i
-nput line 116.
-(pdftex.def)             Requested size: 452.9679pt x 368.82704pt.
- [8 </Users/vincentcarse/Desktop/dist_competition.png>] [9 </Users/vincentcarse
-/Desktop/web_scraper.png>]
-</Users/vincentcarse/Desktop/Participation.pdf, id=112, 844.15375pt x 597.23125
-pt>
-File: /Users/vincentcarse/Desktop/Participation.pdf Graphic file (type pdf)
-<use /Users/vincentcarse/Desktop/Participation.pdf>
-Package pdftex.def Info: /Users/vincentcarse/Desktop/Participation.pdf  used on
- input line 126.
-(pdftex.def)             Requested size: 452.9679pt x 320.47697pt.
-</Users/vincentcarse/Desktop/wealthplot4.pdf, id=113, 597.23125pt x 844.15375pt
+</Users/vincentcarse/Desktop/wealthplot4.pdf, id=142, 597.23125pt x 844.15375pt
 >
 File: /Users/vincentcarse/Desktop/wealthplot4.pdf Graphic file (type pdf)
 <use /Users/vincentcarse/Desktop/wealthplot4.pdf>
 Package pdftex.def Info: /Users/vincentcarse/Desktop/wealthplot4.pdf  used on i
-nput line 132.
+nput line 227.
 (pdftex.def)             Requested size: 452.9679pt x 640.24968pt.
-</Users/vincentcarse/Desktop/wealth_axis.png, id=114, 910.40125pt x 54.2025pt>
+</Users/vincentcarse/Desktop/wealth_axis.png, id=143, 910.40125pt x 54.2025pt>
 File: /Users/vincentcarse/Desktop/wealth_axis.png Graphic file (type png)
 <use /Users/vincentcarse/Desktop/wealth_axis.png>
 Package pdftex.def Info: /Users/vincentcarse/Desktop/wealth_axis.png  used on i
-nput line 138.
+nput line 228.
 (pdftex.def)             Requested size: 452.9679pt x 26.96884pt.
-</Users/vincentcarse/Desktop/gr5vis.pdf, id=115, 614.295pt x 794.97pt>
-File: /Users/vincentcarse/Desktop/gr5vis.pdf Graphic file (type pdf)
-<use /Users/vincentcarse/Desktop/gr5vis.pdf>
-Package pdftex.def Info: /Users/vincentcarse/Desktop/gr5vis.pdf  used on input 
-line 143.
-(pdftex.def)             Requested size: 452.9679pt x 586.19432pt.
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 144.
-</Users/vincentcarse/Desktop/Year_axis.png, id=116, 643.40375pt x 53.19875pt>
+
+
+LaTeX Warning: Float too large for page by 26.67154pt on input line 230.
+
+</Users/vincentcarse/Desktop/Participation.pdf, id=144, 844.15375pt x 597.23125
+pt>
+File: /Users/vincentcarse/Desktop/Participation.pdf Graphic file (type pdf)
+<use /Users/vincentcarse/Desktop/Participation.pdf>
+Package pdftex.def Info: /Users/vincentcarse/Desktop/Participation.pdf  used on
+ input line 234.
+(pdftex.def)             Requested size: 452.9679pt x 320.47697pt.
+</Users/vincentcarse/Desktop/gr5year.png, id=145, 1053.9375pt x 574.145pt>
+File: /Users/vincentcarse/Desktop/gr5year.png Graphic file (type png)
+<use /Users/vincentcarse/Desktop/gr5year.png>
+Package pdftex.def Info: /Users/vincentcarse/Desktop/gr5year.png  used on input
+ line 240.
+(pdftex.def)             Requested size: 452.9679pt x 246.76364pt.
+</Users/vincentcarse/Desktop/Year_axis.png, id=146, 643.40375pt x 53.19875pt>
 File: /Users/vincentcarse/Desktop/Year_axis.png Graphic file (type png)
 <use /Users/vincentcarse/Desktop/Year_axis.png>
 Package pdftex.def Info: /Users/vincentcarse/Desktop/Year_axis.png  used on inp
-ut line 149.
+ut line 241.
 (pdftex.def)             Requested size: 452.9679pt x 37.45396pt.
-</Users/vincentcarse/Desktop/desc_axis.png, id=117, 1088.065pt x 62.2325pt>
+</Users/vincentcarse/Desktop/gr5region.png, id=147, 1059.96pt x 547.04375pt>
+File: /Users/vincentcarse/Desktop/gr5region.png Graphic file (type png)
+<use /Users/vincentcarse/Desktop/gr5region.png>
+Package pdftex.def Info: /Users/vincentcarse/Desktop/gr5region.png  used on inp
+ut line 247.
+(pdftex.def)             Requested size: 452.9679pt x 233.78015pt.
+</Users/vincentcarse/Desktop/desc_axis.png, id=148, 1088.065pt x 62.2325pt>
 File: /Users/vincentcarse/Desktop/desc_axis.png Graphic file (type png)
 <use /Users/vincentcarse/Desktop/desc_axis.png>
 Package pdftex.def Info: /Users/vincentcarse/Desktop/desc_axis.png  used on inp
-ut line 150.
+ut line 248.
 (pdftex.def)             Requested size: 452.9679pt x 25.90767pt.
-</Users/vincentcarse/Desktop/gr10vis.pdf, id=118, 614.295pt x 794.97pt>
-File: /Users/vincentcarse/Desktop/gr10vis.pdf Graphic file (type pdf)
-<use /Users/vincentcarse/Desktop/gr10vis.pdf>
-Package pdftex.def Info: /Users/vincentcarse/Desktop/gr10vis.pdf  used on input
- line 156.
-(pdftex.def)             Requested size: 452.9679pt x 586.19432pt.
- [10 </Users/vincentcarse/Desktop/Participation.pdf>] [11 </Users/vincentcarse/
-Desktop/wealthplot4.pdf>] [12 </Users/vincentcarse/Desktop/wealth_axis.png> </U
-sers/vincentcarse/Desktop/gr5vis.pdf>] [13 </Users/vincentcarse/Desktop/Year_ax
-is.png> </Users/vincentcarse/Desktop/desc_axis.png>] [14 </Users/vincentcarse/D
-esktop/gr10vis.pdf>]
-</Users/vincentcarse/Desktop/eng_reg_gr10.pdf, id=178, 1253.68375pt x 1659.1987
+</Users/vincentcarse/Desktop/gr10year.png, id=149, 1266.7325pt x 722.7pt>
+File: /Users/vincentcarse/Desktop/gr10year.png Graphic file (type png)
+<use /Users/vincentcarse/Desktop/gr10year.png>
+Package pdftex.def Info: /Users/vincentcarse/Desktop/gr10year.png  used on inpu
+t line 254.
+(pdftex.def)             Requested size: 452.9679pt x 258.42944pt.
+File: /Users/vincentcarse/Desktop/Year_axis.png Graphic file (type png)
+<use /Users/vincentcarse/Desktop/Year_axis.png>
+Package pdftex.def Info: /Users/vincentcarse/Desktop/Year_axis.png  used on inp
+ut line 255.
+(pdftex.def)             Requested size: 452.9679pt x 37.45396pt.
+</Users/vincentcarse/Desktop/gr10region.png, id=150, 1266.7325pt x 699.61375pt>
+
+File: /Users/vincentcarse/Desktop/gr10region.png Graphic file (type png)
+<use /Users/vincentcarse/Desktop/gr10region.png>
+Package pdftex.def Info: /Users/vincentcarse/Desktop/gr10region.png  used on in
+put line 261.
+(pdftex.def)             Requested size: 452.9679pt x 250.17407pt.
+File: /Users/vincentcarse/Desktop/desc_axis.png Graphic file (type png)
+<use /Users/vincentcarse/Desktop/desc_axis.png>
+Package pdftex.def Info: /Users/vincentcarse/Desktop/desc_axis.png  used on inp
+ut line 262.
+(pdftex.def)             Requested size: 452.9679pt x 25.90767pt.
+[12 </Users/vincentcarse/Desktop/dist_competition.png>] [13 </Users/vincentcars
+e/Desktop/wealthplot4.pdf> </Users/vincentcarse/Desktop/wealth_axis.png>]
+[14 </Users/vincentcarse/Desktop/Participation.pdf>] [15 </Users/vincentcarse/D
+esktop/gr5year.png> </Users/vincentcarse/Desktop/Year_axis.png> </Users/vincent
+carse/Desktop/gr5region.png> </Users/vincentcarse/Desktop/desc_axis.png>]
+[16 </Users/vincentcarse/Desktop/gr10year.png>] [17 </Users/vincentcarse/Deskto
+p/gr10region.png>] [18]
+</Users/vincentcarse/Desktop/eng_reg_gr10.pdf, id=209, 1253.68375pt x 1659.1987
 5pt>
 File: /Users/vincentcarse/Desktop/eng_reg_gr10.pdf Graphic file (type pdf)
 <use /Users/vincentcarse/Desktop/eng_reg_gr10.pdf>
 Package pdftex.def Info: /Users/vincentcarse/Desktop/eng_reg_gr10.pdf  used on 
-input line 230.
+input line 313.
 (pdftex.def)             Requested size: 452.9679pt x 599.48839pt.
-</Users/vincentcarse/Desktop/math_reg_gr10.pdf, id=179, 1253.68375pt x 1626.075
+</Users/vincentcarse/Desktop/math_reg_gr10.pdf, id=210, 1253.68375pt x 1626.075
 pt>
 File: /Users/vincentcarse/Desktop/math_reg_gr10.pdf Graphic file (type pdf)
 <use /Users/vincentcarse/Desktop/math_reg_gr10.pdf>
 Package pdftex.def Info: /Users/vincentcarse/Desktop/math_reg_gr10.pdf  used on
- input line 238.
+ input line 321.
 (pdftex.def)             Requested size: 452.9679pt x 587.52039pt.
-</Users/vincentcarse/Desktop/eng_reg_gr5.pdf, id=180, 1376.14125pt x 1578.89874
+</Users/vincentcarse/Desktop/eng_reg_gr5.pdf, id=211, 1376.14125pt x 1578.89874
 pt>
 File: /Users/vincentcarse/Desktop/eng_reg_gr5.pdf Graphic file (type pdf)
 <use /Users/vincentcarse/Desktop/eng_reg_gr5.pdf>
 Package pdftex.def Info: /Users/vincentcarse/Desktop/eng_reg_gr5.pdf  used on i
-nput line 244.
+nput line 327.
 (pdftex.def)             Requested size: 452.9679pt x 519.68904pt.
-</Users/vincentcarse/Desktop/math_reg_gr5.pdf, id=181, 1376.14125pt x 1532.7262
+</Users/vincentcarse/Desktop/math_reg_gr5.pdf, id=212, 1376.14125pt x 1532.7262
 6pt>
 File: /Users/vincentcarse/Desktop/math_reg_gr5.pdf Graphic file (type pdf)
 <use /Users/vincentcarse/Desktop/math_reg_gr5.pdf>
 Package pdftex.def Info: /Users/vincentcarse/Desktop/math_reg_gr5.pdf  used on 
-input line 250.
+input line 333.
 (pdftex.def)             Requested size: 452.9679pt x 504.49153pt.
- [15] [16 </Users/vincentcarse/Desktop/eng_reg_gr10.pdf, page is rotated 270 de
-grees>] [17 </Users/vincentcarse/Desktop/math_reg_gr10.pdf, page is rotated 270
- degrees>] [18 </Users/vincentcarse/Desktop/eng_reg_gr5.pdf, page is rotated 27
-0 degrees>] [19 </Users/vincentcarse/Desktop/math_reg_gr5.pdf, page is rotated 
-270 degrees>] [20] [21pdfTeX warning (ext4): destination with the same identifi
+ [19] [20 </Users/vincentcarse/Desktop/eng_reg_gr10.pdf, page is rotated 270 de
+grees>] [21 </Users/vincentcarse/Desktop/math_reg_gr10.pdf, page is rotated 270
+ degrees>] [22 </Users/vincentcarse/Desktop/eng_reg_gr5.pdf, page is rotated 27
+0 degrees>] [23 </Users/vincentcarse/Desktop/math_reg_gr5.pdf, page is rotated 
+270 degrees>] [24] [25pdfTeX warning (ext4): destination with the same identifi
 er (name{cite.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.359 \bibitem{2}
+l.442 \bibitem{2}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{cite.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.359 \bibitem{2}
+l.442 \bibitem{2}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{cite.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.359 \bibitem{2}
+l.442 \bibitem{2}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{cite.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.359 \bibitem{2}
+l.442 \bibitem{2}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{cite.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.359 \bibitem{2}
+l.442 \bibitem{2}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{cite.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.359 \bibitem{2}
+l.442 \bibitem{2}
                  ]pdfTeX warning (ext4): destination with the same identifier (
 name{cite.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.359 \bibitem{2}
+l.442 \bibitem{2}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{cite.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.364 \bibitem{2}
+l.447 \bibitem{2}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{cite.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.369 \bibitem{2}
+l.452 \bibitem{2}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{cite.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.374 \bibitem{2}
+l.457 \bibitem{2}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{cite.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.380 \bibitem{2}
+l.463 \bibitem{2}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{cite.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.386 \bibitem{2}
+l.469 \bibitem{2}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{cite.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.390 \bibitem{2}
+l.473 \bibitem{2}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{cite.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.394 \bibitem{2}
+l.477 \bibitem{2}
                  pdfTeX warning (ext4): destination with the same identifier (n
 ame{cite.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.399 \bibitem{2}
+l.482 \bibitem{2}
                  
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 402.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 485.
 
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 402.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 417.
-[22pdfTeX warning (ext4): destination with the same identifier (name{cite.2}) h
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 485.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 500.
+[26pdfTeX warning (ext4): destination with the same identifier (name{cite.2}) h
 as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.417 \end{document}
+l.500 \end{document}
                     ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 417.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 500.
  (./Model.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 417.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 417.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 500.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 500.
 Package rerunfilecheck Info: File `Model.out' has not changed.
-(rerunfilecheck)             Checksum: 461206655BD9AEAD69A19A7A9BCBEAC8;265.
+(rerunfilecheck)             Checksum: B88904A404AFADBDBE970D12D69B74B1;265.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 417.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 500.
  ) 
 Here is how much of TeX's memory you used:
- 15200 strings out of 492616
- 251354 string characters out of 6129481
- 360393 words of memory out of 5000000
- 18818 multiletter control sequences out of 15000+600000
- 11737 words of font info for 45 fonts, out of 8000000 for 9000
+ 15254 strings out of 492616
+ 252589 string characters out of 6129481
+ 364476 words of memory out of 5000000
+ 18842 multiletter control sequences out of 15000+600000
+ 12660 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,8n,45p,1714b,453s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+ 37i,9n,45p,1847b,453s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pf
+b></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><
-/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
-sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr
-/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/l
-ocal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/loca
-l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/t
-exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texl
-ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
-ve/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive
-/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2
-019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Model.pdf (22 pages, 11611880 bytes).
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
+local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/lo
+cal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loca
+l/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/t
+exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
+ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive
+/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
+2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/20
+19/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2019/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Model.pdf (26 pages, 7786423 bytes).
 PDF statistics:
- 343 PDF objects out of 1000 (max. 8388607)
- 273 compressed objects within 3 object streams
- 55 named destinations out of 1000 (max. 500000)
- 114 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 392 PDF objects out of 1000 (max. 8388607)
+ 306 compressed objects within 4 object streams
+ 69 named destinations out of 1000 (max. 500000)
+ 129 words of extra memory for PDF output out of 10000 (max. 10000000)
 

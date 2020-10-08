@@ -22,8 +22,10 @@ ggarrange(a, b, nrow=2, common.legend = TRUE, legend = 'bottom')
 ggarrange(c, d, nrow=2, common.legend = TRUE, legend = 'bottom')
 
 
-length(unique(hs$grade_span))
 
-hs
 
-ggplot(hs,aes(TAKS_part))+geom_histogram(colour = 'white', fill = 'salmon')+ theme(aspect.ratio=1)+labs(y = 'Count(High Schools)')
+e<- ggplot(hs,aes(TAKS_part))+geom_histogram(colour = 'white', fill = 'salmon')+ theme(aspect.ratio=1)+labs(y = 'Count(High Schools)')
+
+f<- ggplot(ms,aes(TAKS_part))+geom_histogram(colour = 'white', fill = 'salmon')+ theme(aspect.ratio=1)+labs(y = 'Count(Elementary Schools)')
+
+ggarrange(e, f, ncol=2, common.legend = TRUE, legend = 'bottom')

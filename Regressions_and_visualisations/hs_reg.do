@@ -127,8 +127,9 @@ eststo
 
 #delimit ;
 
+###using math_gr10.tex
 
-esttab using math_gr10.tex, nodepvars mlabels(none) ar2 indicate("year fe = *year") nonotes addnotes(
+esttab , nodepvars mlabels(none) ar2 indicate("year fe = *year") nonotes addnotes(
 "(1),(2),(3) - Whole Sample"
 "(4) - Suburban Areas, Major Cities"
 "(5) - Urban Areas, Major Cities"
@@ -242,7 +243,7 @@ eststo
 #delimit ;
 
 
-esttab using eng_gr10.tex, nodepvars mlabels(none) ar2 indicate("year fe = *year") nonotes addnotes(
+esttab , nodepvars mlabels(none) ar2 indicate("year fe = *year") nonotes addnotes(
 "(1),(2),(3) - Whole Sample"
 "(4) - Suburban Areas, Major Cities"
 "(5) - Urban Areas, Major Cities"
